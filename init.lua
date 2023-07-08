@@ -6,4 +6,4 @@ require 'user.lualine'
 require 'user.notify'
 require 'user.cmp'
 require 'user.lsp'
-
+require 'user.illuminate'

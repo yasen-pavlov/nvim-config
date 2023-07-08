@@ -79,6 +79,11 @@ return packer.startup(function(use)
   use 'RRethy/vim-illuminate' -- highlight all uses of word under cursor
   use 'rcarriga/nvim-notify' -- fancy notifications
 
+  -- barbar
+  use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
+  use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+  use 'romgrk/barbar.nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
