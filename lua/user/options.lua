@@ -1,9 +1,9 @@
 -- options
 local options = {
-  clipboard = "unnamedplus",                  -- allows neovim to access the system clipboard
-  cmdheight = 1,                              -- more space in the neovim command line for displaying messages
-  completeopt = { "menuone", "noselect" },    -- mostly just for cmp
-  fileencoding = "utf-8",                     -- the encoding written to a file
+  clipboard = 'unnamedplus',                  -- allows neovim to access the system clipboard
+  cmdheight = 2,                              -- more space in the neovim command line for displaying messages
+  completeopt = { 'menuone', 'noselect' },    -- mostly just for cmp
+  fileencoding = 'utf-8',                     -- the encoding written to a file
   ignorecase = true,                          -- ignore case in search patterns
   mouse = "a",                                -- allow the mouse to be used in neovim
   pumheight = 10,                             -- pop up menu height
@@ -16,7 +16,7 @@ local options = {
   termguicolors = true,                       -- set term gui colors (most terminals support this)
   timeoutlen = 1000,                          -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                            -- enable persistent undo
-  updatetime = 300,                           -- faster completion (4000ms default)
+  updatetime = 250,                           -- faster completion (4000ms default)
   writebackup = false,                        -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   expandtab = true,                           -- convert tabs to spaces
   shiftwidth = 2,                             -- the number of spaces inserted for each indentation
@@ -24,20 +24,20 @@ local options = {
   cursorline = false,                         -- highlight the current line
   number = true,                              -- set numbered lines
   numberwidth = 2,                            -- set number column width to 2 {default 4}
-  signcolumn = "yes",                         -- always show the sign column, otherwise it would shift the text each time
+  signcolumn = 'yes',                         -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                               -- display lines as one long line
   scrolloff = 8,                              -- how many lines to keep on screen vertically when scrolling
   sidescrolloff = 8                           -- how many lines to keep on screen horizontally when scrolling
 }
 
-vim.opt.shortmess:append "c"                    -- supress `ins-completeion-menu` messages 
+vim.opt.shortmess:append 'c'                    -- supress `ins-completeion-menu` messages 
 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
 -- commands
-vim.cmd "set whichwrap+=<,>,[,],h,l"            -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
+vim.cmd 'set whichwrap+=<,>,[,],h,l'            -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
 vim.cmd [[set iskeyword+=-]]                    -- treat words with dashes in them as whole words
 vim.cmd [[set formatoptions-=cro]]              -- TODO: this doesn't seem to work
 

@@ -1,11 +1,14 @@
-local colorscheme = "material"
+-- colorscheme settings
 
 -- material theme config
-vim.g.material_style = "darker"
+vim.g.material_style = 'darker'
 
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-  vim.notify("colorscheme " .. colorscheme .. " not found!")
-  return
-end
-
+-- try to load colorscheme with fallback
+vim.cmd [[
+try
+  colorscheme material
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+]]
