@@ -17,4 +17,10 @@ return {
   'williamboman/mason.nvim', -- simple to use language server installer
   'williamboman/mason-lspconfig.nvim', -- simple to use language server installer
   'jose-elias-alvarez/null-ls.nvim', -- LSP diagnostics and code actions
+
+  -- Telescope
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  }
 }
