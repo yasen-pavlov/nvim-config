@@ -1,9 +1,6 @@
 require 'user.options'
 require 'user.keymaps'
-require 'user.plugins'
-require 'user.colorscheme'
-require 'user.lualine'
-require 'user.notify'
-require 'user.cmp'
-require 'user.lsp'
-require 'user.illuminate'
+require 'plugin_loader'
+require 'core.cmp'
+require 'core.lsp'
+
