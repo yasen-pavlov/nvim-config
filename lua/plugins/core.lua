@@ -26,10 +26,10 @@ return {
 
   -- Treesitter
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
     config = function ()
-      local treesitter = require("nvim-treesitter.configs")
+      local treesitter = require('nvim-treesitter.configs')
 
       treesitter.setup({
         ensure_insgtalled = { 'all' },
@@ -40,19 +40,16 @@ return {
     end
   },
   'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
+  'nvim-treesitter/playground', -- Treesitter playground
 
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {
       icons = {
-        breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "", -- symbol used between a key and it's label
-        group = "󰉕 ", -- symbol prepended to a group
-      },
-      popup_mappings = {
-        scroll_down = "<a-[>", -- binding to scroll down inside the popup
-        scroll_up = "<a-]>", -- binding to scroll up inside the popup
+        breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
+        separator = '', -- symbol used between a key and it's label
+        group = '󰉕 ', -- symbol prepended to a group
       },
     }
   }
