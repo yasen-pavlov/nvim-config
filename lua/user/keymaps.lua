@@ -1,78 +1,73 @@
-local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
-
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
---Remap space as leader key
-keymap('', '<Space>', '<Nop>', opts)
+-- remap leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Modes
---   normal_mode = 'n',
---   insert_mode = 'i',
---   visual_mode = 'v',
---   visual_block_mode = 'x',
---   term_mode = 't',
---   command_mode = 'c',
+local opts = {noremap = false, silent = false}
 
--- Normal --
--- Better window navigation
-keymap('n', '<C-h>', '<C-w>h', opts)
-keymap('n', '<C-j>', '<C-w>j', opts)
-keymap('n', '<C-k>', '<C-w>k', opts)
-keymap('n', '<C-l>', '<C-w>l', opts)
+local modes = {
+  insert_mode = 'i',
+  normal_mode = 'n',
+  term_mode = 't',
+  visual_mode = 'v',
+  visual_block_mode = 'x',
+  command_mode = 'c',
+  operator_pending_mode = 'o',
+}
 
--- Explore
-keymap('n', '<leader>e', ':Lex 30<cr>', opts)
+local keymappings = {
+  insert_mode = {
+    {keys = 'jk', command = '<ESC>', desc = 'Homerow ESC alternative'},
+    {keys = '<A-j>', command = '<Esc>:m .+1<CR>==gi', desc = 'Move line down'},
+    {keys = '<A-k>', command = '<Esc>:m .-2<CR>==gi', desc = 'Move line up'},
+  },
+  normal_mode = {
+    -- Move current line
+    {keys = '<A-j>', command = '<Cmd>m .+1<CR>==', desc = 'Move line down'},
+    {keys = '<A-k>', command = '<Cmd>m .-2<CR>==', desc = 'Move line up'},
 
--- Resize with arrows
-keymap('n', '<A-Up>', ':resize +2<CR>', opts)
-keymap('n', '<A-Down>', ':resize -2<CR>', opts)
-keymap('n', '<A-Left>', ':vertical resize +2<CR>', opts)
-keymap('n', '<A-Right>', ':vertical resize -2<CR>', opts)
+    -- Telescope
+    {keys = '<C-f>', command = '<Cmd>Telescope live_grep<CR>', desc = 'Find in files'},
+    {keys = '<C-s>', command = '<Cmd>Telescope find_files<CR>', desc = 'Find files'},
 
--- Navigate buffers
-keymap('n', '<C-n>', ':bnext<CR>', opts)
-keymap('n', '<C-m>', ':bprevious<CR>', opts)
+    -- Buffers
+    {keys = '<A-,>', command = '<Cmd>BufferPrevious<CR>', desc = 'Previous buffer'},
+    {keys = '<A-.>', command = '<Cmd>BufferNext<CR>', desc = 'Next buffer'},
+    {keys = '<A-<>', command = '<Cmd>BufferMovePrevious<CR>', desc = 'Move buffer left'},
+    {keys = '<A->>', command = '<Cmd>BufferMoveNext<CR>', desc = 'Move buffer right'},
+    {keys = '<A-1>', command = ':BufferGoto 1<CR>', desc = 'Go to buffer 1'},
+    {keys = '<A-2>', command = '<Cmd>BufferGoto 2<CR>', desc = 'Go to buffer 2'},
+    {keys = '<A-3>', command = '<Cmd>BufferGoto 3<CR>', desc = 'Go to buffer 3'},
+    {keys = '<A-4>', command = '<Cmd>BufferGoto 4<CR>', desc = 'Go to buffer 4'},
+    {keys = '<A-5>', command = '<Cmd>BufferGoto 5<CR>', desc = 'Go to buffer 5'},
+    {keys = '<A-6>', command = '<Cmd>BufferGoto 6<CR>', desc = 'Go to buffer 6'},
+    {keys = '<A-7>', command = '<Cmd>BufferGoto 7<CR>', desc = 'Go to buffer 7'},
+    {keys = '<A-8>', command = '<Cmd>BufferGoto 8<CR>', desc = 'Go to buffer 8'},
+    {keys = '<A-9>', command = '<Cmd>BufferGoto 9<CR>', desc = 'Go to buffer 9'},
+    {keys = '<A-0>', command = '<Cmd>BufferLast<CR>', desc = 'Go to last buffer'},
+    {keys = '<A-p>', command = '<Cmd>BufferPin<CR>', desc = 'Pin buffer'},
+    {keys = '<A-c>', command = '<Cmd>BufferClose<CR>', desc = 'Close buffer'},
+  },
+  visual_mode = {
+    {keys = '<', command = '<gv', desc = 'Ident left'},
+    {keys = '>', command = '>gv', desc = 'Ident right'},
+    {keys = '<A-j>', command = "<Cmd>m '>+1<CR>gv-gv", desc = 'Move selected text down'},
+    {keys = '<A-k>', command = "<Cmd>m '<-2<CR>gv-gv", desc = 'Move selected text up'},
+  },
+}
 
--- Insert --
--- Press jk fast to enter
-keymap('i', 'jk', '<ESC>', opts)
+local map = function(mode, keys, commmand, description)
+  local opts_with_desc = vim.deepcopy(opts)
+  opts_with_desc['desc'] = description
+  vim.keymap.set(mode, keys, commmand, opts_with_desc)
+end
 
--- Visual --
--- Stay in indent mode
-keymap('v', '<', '<gv', opts)
-keymap('v', '>', '>gv', opts)
+local load_keymaps = function()
+  for mode, mappings in pairs(keymappings) do
+    for _,mapping in ipairs(mappings) do
+      map(modes[mode], mapping['keys'], mapping['command'], mapping['desc'])
+    end
+  end
+end
 
--- Move text up and down
-keymap('v', '<A-j>', ':m .+1<CR>==', opts)
-keymap('v', '<A-k>', ':m .-2<CR>==', opts)
-
--- change put behaviour so that it keeps yanked text
-keymap('v', 'p', '"_dP', opts)
-
--- Visual Block --
--- Move text up and down
-keymap('x', 'J', ":move '>+1<CR>gv-gv", opts)
-keymap('x', 'K', ":move '<-2<CR>gv-gv", opts)
-keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
-keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
-
--- Terminal --
--- Better terminal navigation
-keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
-keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
-keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
-keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
-
--- Telescope --
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<c-s>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
+load_keymaps()
 

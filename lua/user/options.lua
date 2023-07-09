@@ -14,7 +14,7 @@ local options = {
   splitright = true,                          -- force all vertical splits to go to the right of current window
   swapfile = false,                           -- creates a swapfile
   termguicolors = true,                       -- set term gui colors (most terminals support this)
-  timeoutlen = 1000,                          -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 300,                           -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                            -- enable persistent undo
   updatetime = 250,                           -- faster completion (4000ms default)
   writebackup = false,                        -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -27,7 +27,7 @@ local options = {
   signcolumn = 'yes',                         -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                               -- display lines as one long line
   scrolloff = 8,                              -- how many lines to keep on screen vertically when scrolling
-  sidescrolloff = 8                           -- how many lines to keep on screen horizontally when scrolling
+  sidescrolloff = 8,                          -- how many lines to keep on screen horizontally when scrolling
 }
 
 vim.opt.shortmess:append 'c'                    -- supress `ins-completeion-menu` messages 

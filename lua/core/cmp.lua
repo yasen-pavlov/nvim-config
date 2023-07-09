@@ -43,7 +43,7 @@ local kind_icons = {
   Operator = '',
   TypeParameter = '󰉺',
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet         
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -112,7 +112,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
