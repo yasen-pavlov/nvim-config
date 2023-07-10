@@ -27,6 +27,13 @@ return {
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
+      'nvim-treesitter/playground',-- Treesitter playground
+      'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
+      'windwp/nvim-ts-autotag', -- auto close tags
+      'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
+    },
     build = ':TSUpdate',
     config = function ()
       local treesitter = require('nvim-treesitter.configs')
@@ -36,12 +43,15 @@ return {
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
+        endwise = { enable = true },
+        autotag = { enable = true },
+        context_commentstring = { enable = true },
       })
     end
   },
-  'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
-  'nvim-treesitter/playground', -- Treesitter playground
 
+
+  -- Which key
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
@@ -52,6 +62,39 @@ return {
         group = '󰉕 ', -- symbol prepended to a group
       },
     }
-  }
+  },
+
+  -- autopairs
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function ()
+      require('nvim-autopairs').setup({
+        check_ts = true,
+        ts_config = {
+          lua = { 'string', 'source' },
+          javascript = { 'string', 'template_string' },
+          java = false,
+        },
+        fast_wrap = {},
+      })
+
+      -- configure cmp integration
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      local cmp = require('cmp')
+
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    end
+  },
+
+  -- comment
+  {
+    'numToStr/Comment.nvim',
+    config = function ()
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
+    end
+  },
 }
 
