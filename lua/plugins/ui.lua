@@ -4,13 +4,20 @@ return {
     'marko-cerovac/material.nvim',
     lazy = false,
     priority = 1000,
+    opts = {
+    },
     config = function()
+      require('material').setup({
+        high_visibility = {
+          lighter = true, -- Enable higher contrast text for lighter style
+          darker = true -- Enable higher contrast text for darker style
+        },
+      })
       vim.g.material_style = 'darker'
       vim.cmd([[colorscheme material]])
     end
   },
 
-  -- lualine
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
@@ -37,14 +44,14 @@ return {
   -- illuminate
   {
     'RRethy/vim-illuminate',
-      config = function()
-        require('illuminate').configure {
-          providers = {
-            'lsp',
-            'treesitter',
-          },
-        }
-      end
+    config = function()
+      require('illuminate').configure {
+        providers = {
+          'lsp',
+          'treesitter',
+        },
+      }
+    end
   },
 
   -- fancy notifications

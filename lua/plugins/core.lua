@@ -21,7 +21,16 @@ return {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function ()
+      require('telescope').load_extension 'file_browser'
+    end
+  },
+
+  -- Telescope file browser
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
 
   -- Treesitter
@@ -61,7 +70,8 @@ return {
         separator = '', -- symbol used between a key and it's label
         group = '󰉕 ', -- symbol prepended to a group
       },
-    }
+      ignore_missing = true,
+    },
   },
 
   -- autopairs
@@ -95,6 +105,21 @@ return {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       })
     end
+  },
+
+  -- gitsigns
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add          = { text = '▎' },
+        change       = { text = '▎' },
+        delete       = { text = '󰐊' },
+        topdelete    = { text = '󰐊' },
+        changedelete = { text = '󰐊' },
+        untracked    = { text = '┆' },
+      },
+    },
   },
 }
 
