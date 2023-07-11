@@ -68,10 +68,7 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 end
 
-local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if status_ok then
-  M.capabilities = cmp_nvim_lsp.default_capabilities()
-end
+require('cmp_nvim_lsp').default_capabilities()
 
 return M
 

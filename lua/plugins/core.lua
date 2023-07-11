@@ -1,36 +1,34 @@
 return {
   -- cmp --
-  'hrsh7th/nvim-cmp', -- The completion plugin
-  'hrsh7th/cmp-buffer', -- buffer completions
-  'hrsh7th/cmp-path', -- path completions
-  'hrsh7th/cmp-cmdline',  -- cmdline completions
-  'saadparwaiz1/cmp_luasnip', -- snippet completions
-  'hrsh7th/cmp-nvim-lsp', -- lsp integration for cmp
-  'hrsh7th/cmp-nvim-lua', -- nvim lua api completions
-
-  -- cmp snippets
-  'L3MON4D3/LuaSnip', --snippet engine
-  'rafamadriz/friendly-snippets', -- a bunch of snippets to use
-
-  -- lsp --
-  'neovim/nvim-lspconfig', -- enable LSP
-  'williamboman/mason.nvim', -- simple to use language server installer
-  'williamboman/mason-lspconfig.nvim', -- simple to use language server installer
-  'jose-elias-alvarez/null-ls.nvim', -- LSP diagnostics and code actions
-
-  -- Telescope
   {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function ()
-      require('telescope').load_extension 'file_browser'
-    end
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-buffer', -- buffer completions
+      'hrsh7th/cmp-path', -- path completions
+      'hrsh7th/cmp-cmdline',  -- cmdline completions
+      'saadparwaiz1/cmp_luasnip', -- snippet completions
+      'hrsh7th/cmp-nvim-lsp', -- lsp integration for cmp
+      'hrsh7th/cmp-nvim-lua', -- nvim lua api completions
+      'L3MON4D3/LuaSnip', --snippet engine
+      'rafamadriz/friendly-snippets', -- a bunch of snippets to use
+    },
+    config = function()
+      require('config.cmp')
+    end,
+    event = { "InsertEnter", "CmdlineEnter" },
   },
 
-  -- Telescope file browser
+  -- LSP --
   {
-    'nvim-telescope/telescope-file-browser.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim', -- package manager for lsp
+      'williamboman/mason-lspconfig.nvim', -- lsp integration with mason
+      'jose-elias-alvarez/null-ls.nvim', -- add non-lsp sources to hook to lsp
+    },
+    config = function()
+      require('config.lsp')
+    end
   },
 
   -- Treesitter
@@ -43,35 +41,42 @@ return {
       'windwp/nvim-ts-autotag', -- auto close tags
       'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
     },
+    config = function()
+      require('config.treesitter')
+    end,
     build = ':TSUpdate',
-    config = function ()
-      local treesitter = require('nvim-treesitter.configs')
-
-      treesitter.setup({
-        auto_install = true,
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-        endwise = { enable = true },
-        autotag = { enable = true },
-        context_commentstring = { enable = true },
-      })
-    end
+    event = "User FileOpened",
+    cmd = {
+      "TSInstall",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSInstallFromGrammar",
+    },
   },
 
+  -- Telescope
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-file-browser.nvim'
+    },
+    config = function()
+      require('config.telescope')
+    end,
+    cmd = "Telescope",
+  },
 
   -- Which key
   {
     'folke/which-key.nvim',
+    config = function()
+      require('config.which-key')
+    end,
     event = 'VeryLazy',
-    opts = {
-      icons = {
-        breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
-        separator = '', -- symbol used between a key and it's label
-        group = '󰉕 ', -- symbol prepended to a group
-      },
-      ignore_missing = true,
-    },
   },
 
   -- autopairs
