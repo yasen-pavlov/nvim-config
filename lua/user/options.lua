@@ -28,16 +28,20 @@ local options = {
   wrap = false,                               -- display lines as one long line
   scrolloff = 8,                              -- how many lines to keep on screen vertically when scrolling
   sidescrolloff = 8,                          -- how many lines to keep on screen horizontally when scrolling
+  laststatus = 3,                             -- enable global statusline                             
 }
 
-vim.opt.shortmess:append 'c'                    -- supress `ins-completeion-menu` messages 
+-- disable comments continuation 
+vim.cmd('autocmd BufEnter * set formatoptions-=cro')
+vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
+-- misc settings
+vim.opt.shortmess:append 'c' -- supress `ins-completeion-menu` messages
+vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
+vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
+
+-- load options
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
-
--- commands
-vim.cmd 'set whichwrap+=<,>,[,],h,l'            -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
-vim.cmd [[set iskeyword+=-]]                    -- treat words with dashes in them as whole words
-vim.cmd [[set formatoptions-=cro]]              -- TODO: this doesn't seem to work
 

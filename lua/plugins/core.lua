@@ -29,8 +29,8 @@ return {
 
   -- Telescope file browser
   {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }
   },
 
   -- Treesitter
@@ -48,7 +48,7 @@ return {
       local treesitter = require('nvim-treesitter.configs')
 
       treesitter.setup({
-        ensure_insgtalled = { 'all' },
+        auto_install = true,
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
@@ -104,7 +104,9 @@ return {
       require('Comment').setup({
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       })
-    end
+    end,
+    keys = { { 'gc', mode = { 'n', 'v' } }, { 'gb', mode = { 'n', 'v' } } },
+    event = 'User FileOpened',
   },
 
   -- gitsigns
@@ -117,7 +119,7 @@ return {
         delete       = { text = '󰐊' },
         topdelete    = { text = '󰐊' },
         changedelete = { text = '󰐊' },
-        untracked    = { text = '┆' },
+        untracked    = { text = '︴' },
       },
     },
   },
