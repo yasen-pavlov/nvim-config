@@ -39,10 +39,6 @@ return {
   {
     'RRethy/vim-illuminate',
     config = load_config('illuminate'),
-    dependencies = {
-      'neovim/nvim-lspconfig', -- nvim-lspconfig
-      'nvim-treesitter/nvim-treesitter', -- treesitter
-    },
     event = 'User FileOpened',
   },
 

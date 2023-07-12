@@ -81,10 +81,6 @@ return {
   -- autopairs --
   {
     'windwp/nvim-autopairs',
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- treesitter
-      "hrsh7th/nvim-cmp" -- cmp
-    },
     config = load_config('autopairs'),
     event = 'InsertEnter',
   },

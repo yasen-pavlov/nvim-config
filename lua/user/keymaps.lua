@@ -32,8 +32,8 @@ local keymappings = {
     {keys = '<A-k>', command = '<Cmd>m .-2<CR>==', desc = 'Move line up'},
 
     -- Telescope
-    {keys = '<C-f>', command = '<Cmd>Telescope live_grep<CR>', desc = 'Find in files'},
-    {keys = '<C-s>', command = '<Cmd>Telescope find_files<CR>', desc = 'Find files'},
+    {keys = '<C-f>', command = '<Cmd>Telescope live_grep theme=dropdown<CR>', desc = 'Find in files'},
+    {keys = '<C-s>', command = '<Cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find files'},
 
     -- Buffers
     {keys = '<A-,>', command = '<Cmd>BufferLineCyclePrev<CR>', desc = 'Previous buffer'},
