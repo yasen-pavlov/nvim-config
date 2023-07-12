@@ -1,6 +1,4 @@
-local treesitter = require('nvim-treesitter.configs')
-
-treesitter.setup({
+require('nvim-treesitter.configs').setup({
   auto_install = true,
   sync_install = false,
   highlight = { enable = true },

@@ -1,3 +1,17 @@
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    group_empty = true,
+    root_folder_label = ':t',
+  },
+  diagnostics = {
+    enable = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 -- auto close function
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close
 vim.api.nvim_create_autocmd("QuitPre", {

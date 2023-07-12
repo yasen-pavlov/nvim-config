@@ -21,6 +21,12 @@ local keymappings = {
     {keys = '<A-k>', command = '<Esc>:m .-2<CR>==gi', desc = 'Move line up'},
   },
   normal_mode = {
+    -- Navigate between splits
+    {keys = '<C-h>', command = '<C-w>h', desc = 'Move to left split'},
+    {keys = '<C-j>', command = '<C-w>j', desc = 'Move to split below'},
+    {keys = '<C-k>', command = '<C-w>k', desc = 'Move to split above'},
+    {keys = '<C-l>', command = '<C-w>l', desc = 'Move to right split'},
+
     -- Move current line
     {keys = '<A-j>', command = '<Cmd>m .+1<CR>==', desc = 'Move line down'},
     {keys = '<A-k>', command = '<Cmd>m .-2<CR>==', desc = 'Move line up'},

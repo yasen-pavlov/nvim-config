@@ -5,5 +5,5 @@ vim.g.loaded_netrw = 1
 require('user.options')
 require('user.keymaps')
 require('plugin_loader')
-require('config')
+require('autocmds')
 

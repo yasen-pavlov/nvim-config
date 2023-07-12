@@ -31,10 +31,6 @@ local options = {
   laststatus = 3,                             -- enable global statusline                             
 }
 
--- disable comments continuation 
-vim.cmd('autocmd BufEnter * set formatoptions-=cro')
-vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
-
 -- misc settings
 vim.opt.shortmess:append 'c' -- supress `ins-completeion-menu` messages
 vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)

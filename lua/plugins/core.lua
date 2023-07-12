@@ -1,4 +1,11 @@
+local load_config = function(plugin)
+  return function()
+    require('config.core.' .. plugin)
+  end
+end
+
 return {
+
   -- cmp --
   {
     'hrsh7th/nvim-cmp',
@@ -12,9 +19,7 @@ return {
       'L3MON4D3/LuaSnip', --snippet engine
       'rafamadriz/friendly-snippets', -- a bunch of snippets to use
     },
-    config = function()
-      require('config.cmp')
-    end,
+    config = load_config('cmp'),
     event = { "InsertEnter", "CmdlineEnter" },
   },
 
@@ -26,12 +31,12 @@ return {
       'williamboman/mason-lspconfig.nvim', -- lsp integration with mason
       'jose-elias-alvarez/null-ls.nvim', -- add non-lsp sources to hook to lsp
     },
-    config = function()
-      require('config.lsp')
-    end
+    config = load_config('lsp'),
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
   },
 
-  -- Treesitter
+  -- Treesitter --
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -41,9 +46,7 @@ return {
       'windwp/nvim-ts-autotag', -- auto close tags
       'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
     },
-    config = function()
-      require('config.treesitter')
-    end,
+    config = load_config('treesitter'),
     build = ':TSUpdate',
     event = "User FileOpened",
     cmd = {
@@ -57,76 +60,52 @@ return {
     },
   },
 
-  -- Telescope
+  -- Telescope --
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-file-browser.nvim'
+      'nvim-lua/plenary.nvim', -- utility functions
+      'nvim-telescope/telescope-file-browser.nvim' -- file browser for telescope
     },
-    config = function()
-      require('config.telescope')
-    end,
+    config = load_config('telescope'),
     cmd = "Telescope",
   },
 
-  -- Which key
+  -- Which key --
   {
     'folke/which-key.nvim',
-    config = function()
-      require('config.which-key')
-    end,
+    config = load_config('which-key'),
     event = 'VeryLazy',
   },
 
-  -- autopairs
+  -- autopairs --
   {
     'windwp/nvim-autopairs',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- treesitter
+      "hrsh7th/nvim-cmp" -- cmp
+    },
+    config = load_config('autopairs'),
     event = 'InsertEnter',
-    config = function ()
-      require('nvim-autopairs').setup({
-        check_ts = true,
-        ts_config = {
-          lua = { 'string', 'source' },
-          javascript = { 'string', 'template_string' },
-          java = false,
-        },
-        fast_wrap = {},
-      })
-
-      -- configure cmp integration
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      local cmp = require('cmp')
-
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end
   },
 
-  -- comment
+  -- Comment --
   {
     'numToStr/Comment.nvim',
-    config = function ()
-      require('Comment').setup({
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      })
-    end,
-    keys = { { 'gc', mode = { 'n', 'v' } }, { 'gb', mode = { 'n', 'v' } } },
+    config = load_config('comment'),
     event = 'User FileOpened',
+    keys = {
+      { 'gc', mode = { 'n', 'v' } },
+      { 'gb', mode = { 'n', 'v' } }
+    },
   },
 
-  -- gitsigns
+  -- gitsigns --
   {
     'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add          = { text = '▎' },
-        change       = { text = '▎' },
-        delete       = { text = '󰐊' },
-        topdelete    = { text = '󰐊' },
-        changedelete = { text = '󰐊' },
-        untracked    = { text = '︴' },
-      },
-    },
+    config = load_config('gitsigns'),
+    event = "User FileOpened",
+    cmd = "Gitsigns",
   },
 }
 
