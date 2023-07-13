@@ -5,8 +5,8 @@ local mappings = {
   h = { '<Cmd>WhichKey<CR>', 'Key bindings help' },
   B = { '<Cmd>Telescope file_browser path=%:p:h select_buffer=true theme=ivy<CR>', 'File Browser' },
   c = { '<Cmd>noh<CR>', 'Clear search' },
-  f = {
-    name = 'Find',
+  s = {
+    name = 'Search',
     f = { '<Cmd>Telescope find_files<CR>', 'Find files' },
     g = { '<Cmd>Telescope live_grep<CR>', 'Find in files' },
     b = { '<Cmd>Telescope buffers<CR>', 'Find in buffers' },
@@ -55,6 +55,21 @@ local mappings = {
     d = { '<Cmd>Gitsigns diffthis HEAD<CR>','Git Diff',
     },
   },
+  f = 'Format buffer',
+  W = {
+    name = 'Workspace',
+    a = { 'Add folder to workspace' },
+    r = { 'Remove folder from workspace' },
+    l = { 'List workspace folders' },
+  },
+  l = {
+    name = 'LSP',
+    r = { 'Rename all references' },
+    a = { 'Select code action' },
+    l = { 'Add diagnostics to location list' },
+    m = { '<Cmd>Mason<CR>','Mason' },
+    i = { '<Cmd>LspInfo<CR>','Info' },
+  },
 }
 
 local opts = {
@@ -74,7 +89,7 @@ which_key.setup({
     separator = '', -- symbol used between a key and it's label
     group = '󰉕 ', -- symbol prepended to a group
   },
-  ignore_missing = true,
+  ignore_missing = false,
 })
 
 which_key.register(mappings, opts)

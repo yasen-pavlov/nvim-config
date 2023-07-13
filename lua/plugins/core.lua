@@ -23,17 +23,20 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
   },
 
-  -- LSP --
+  -- Mason, LSP & null-ls --
   {
-    'neovim/nvim-lspconfig',
+    'williamboman/mason.nvim',
     dependencies = {
-      'williamboman/mason.nvim', -- package manager for lsp
-      'williamboman/mason-lspconfig.nvim', -- lsp integration with mason
-      'jose-elias-alvarez/null-ls.nvim', -- add non-lsp sources to hook to lsp
+      'neovim/nvim-lspconfig', -- lsp configurations
+      'williamboman/mason-lspconfig.nvim', -- mason lsp autoconfiguration
+      'folke/neodev.nvim', -- nvim lua api configuration for lsp
+      'b0o/schemastore.nvim', -- json and yaml schemastore
+      'jose-elias-alvarez/null-ls.nvim', -- null-ls
+      'jay-babu/mason-null-ls.nvim', -- mason null-ls configuration
     },
-    config = load_config('lsp'),
+    config = load_config('mason'),
     event = { "BufReadPost", "BufNewFile" },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason", "NullLs" },
   },
 
   -- Treesitter --

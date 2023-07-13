@@ -29,6 +29,8 @@ local options = {
   scrolloff = 8,                              -- how many lines to keep on screen vertically when scrolling
   sidescrolloff = 8,                          -- how many lines to keep on screen horizontally when scrolling
   laststatus = 3,                             -- enable global statusline                             
+  guifont = 'JetBrainsMono_Nerd_Font:h15',    -- gui font
+  linespace = 0,                              -- set line spacing (works only for gui apps)
 }
 
 -- misc settings
@@ -40,4 +42,8 @@ vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
+
+-- neovide settings
+-- vim.g.neovide_refresh_rate = 144
+vim.g.neovide_cursor_animation_length = 0.03
 
