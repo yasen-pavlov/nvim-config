@@ -1,7 +1,6 @@
-require('illuminate').configure {
-  providers = {
-    'lsp',
-    'treesitter',
-  },
-}
-
+require("illuminate").configure({
+	providers = {
+		"lsp",
+		"treesitter",
+	},
+})
