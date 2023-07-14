@@ -40,7 +40,7 @@ local mappings = {
 	},
 	g = {
 		name = "Git",
-		g = { '<Cmd>lua require("lvim.core.terminal").lazygit_toggle()<CR>', "Lazygit" },
+		g = { '<Cmd>lua _LAZY_GIT_TOGGLE()<CR>', "Lazygit" },
 		j = { '<Cmd>lua require("gitsigns").next_hunk({navigation_message = false})<CR>', "Next Hunk" },
 		k = { '<Cmd>lua require("gitsigns").prev_hunk({navigation_message = false})<CR>', "Prev Hunk" },
 		l = { '<Cmd>lua require("gitsigns").blame_line()<CR>', "Blame" },
@@ -89,7 +89,10 @@ which_key.setup({
 		separator = "", -- symbol used between a key and it's label
 		group = "󰉕 ", -- symbol prepended to a group
 	},
-	ignore_missing = false,
+  window = {
+    border = "single", -- none, single, double, shadow
+  },
+	ignore_missing = true,
 })
 
 which_key.register(mappings, opts)

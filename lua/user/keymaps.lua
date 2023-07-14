@@ -54,10 +54,10 @@ local keymappings = {
 		{ keys = "<A-c>", command = "<Cmd>Bdelete<CR>", desc = "Close buffer" },
 	},
 	visual_mode = {
-		{ keys = "<", command = "<gv", desc = "Ident left" },
-		{ keys = ">", command = ">gv", desc = "Ident right" },
-		{ keys = "<A-j>", command = "<Cmd>m '>+1<CR>gv-gv", desc = "Move selected text down" },
-		{ keys = "<A-k>", command = "<Cmd>m '<-2<CR>gv-gv", desc = "Move selected text up" },
+    { keys = "J", command = "<gv", desc = "Ident left" },
+    { keys = "K", command = ">gv", desc = "Ident right" },
+    { keys = "<A-j>", command = "<Cmd>m '>+1<CR>gv-gv", desc = "Move selected text down" },
+    { keys = "<A-k>", command = "<Cmd>m '<-2<CR>gv-gv", desc = "Move selected text up" },
 	},
 }
 

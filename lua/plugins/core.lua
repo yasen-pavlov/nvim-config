@@ -6,6 +6,39 @@ end
 
 return {
 
+	-- {
+	--   'VonHeikemen/lsp-zero.nvim',
+	--   branch = 'v2.x',
+	--   dependencies = {
+	--     -- LSP Support
+	--     "neovim/nvim-lspconfig",
+	--     {
+	--       'williamboman/mason.nvim',
+	--       build = function()
+	--         pcall(vim.cmd, 'MasonUpdate')
+	--       end,
+	--     },
+	--     'williamboman/mason-lspconfig.nvim',
+	--     "folke/neodev.nvim",
+	--     "b0o/schemastore.nvim",
+	--
+	--
+	--     -- Autocompletion
+	--      'hrsh7th/nvim-cmp',
+	--      'hrsh7th/cmp-nvim-lsp',
+	-- 	"hrsh7th/cmp-buffer", -- buffer completions
+	-- 	"hrsh7th/cmp-path", -- path completions
+	-- 	"hrsh7th/cmp-cmdline", -- cmdline completions
+	--      'L3MON4D3/LuaSnip',
+	--      "rafamadriz/friendly-snippets",
+	--
+	--     -- NullLs
+	--     "jose-elias-alvarez/null-ls.nvim",
+	--     "jay-babu/mason-null-ls.nvim"
+	--   },
+	--   config = load_config("lsp-zero")
+	-- },
+
 	-- cmp --
 	{
 		"hrsh7th/nvim-cmp",
@@ -110,6 +143,14 @@ return {
 	-- undotree
 	{
 		"mbbill/undotree",
-		keys = { "<leader>u", mode = { "n" } },
+    event = "VimEnter",
+	},
+
+	-- toggleterm
+	{
+		"akinsho/toggleterm.nvim",
+		config = load_config("toggleterm"),
+		version = "*",
+    event = "VimEnter",
 	},
 }
