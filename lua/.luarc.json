@@ -39,5 +39,6 @@
         "/Users/muty/.local/share/nvim/lazy/gitsigns.nvim/lua",
         "/Users/muty/Workbench/Projects/personal/nvim-config/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

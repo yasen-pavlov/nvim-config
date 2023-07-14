@@ -1,4 +1,4 @@
-require("material").setup({
+require('material').setup({
 	styles = {
 		comments = { italic = true },
 		-- strings = { --[[ bold = true ]] },
@@ -12,21 +12,21 @@ require("material").setup({
 		-- Available plugins:
 		-- 'dap',
 		-- 'dashboard',
-		"gitsigns",
+		'gitsigns',
 		-- 'hop',
-		"indent-blankline",
+		'indent-blankline',
 		-- 'lspsaga',
 		-- 'mini',
 		-- 'neogit',
 		-- 'neorg',
-		"nvim-cmp",
+		'nvim-cmp',
 		-- 'nvim-navic',
-		"nvim-tree",
-		"nvim-web-devicons",
+		'nvim-tree',
+		'nvim-web-devicons',
 		-- 'sneak',
-		"telescope",
+		'telescope',
 		-- 'trouble',
-		"which-key",
+		'which-key',
 	},
 	disable = {
 		colored_cursor = false, -- Disable the colored cursor
@@ -39,16 +39,16 @@ require("material").setup({
 		lighter = true, -- Enable higher contrast text for lighter style
 		darker = false, -- Enable higher contrast text for darker style
 	},
-	lualine_style = "stealth",
+	lualine_style = 'stealth',
 
 	custom_colors = function(colors)
-		colors.editor.fg = "#EEFFFF"
-		colors.main.fg_dark = "#B0BEC5"
+		colors.editor.fg = '#EEFFFF'
+		colors.main.fg_dark = '#B0BEC5'
 	end,
 })
 
 -- set style
-vim.g.material_style = "darker"
+vim.g.material_style = 'darker'
 
 -- set as default colorscheme
 vim.cmd([[colorscheme material]])

@@ -1,11 +1,11 @@
 -- options
 local options = {
-	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+	clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
-	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-	fileencoding = "utf-8", -- the encoding written to a file
+	completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
+	fileencoding = 'utf-8', -- the encoding written to a file
 	ignorecase = true, -- ignore case in search patterns
-	mouse = "a", -- allow the mouse to be used in neovim
+	mouse = 'a', -- allow the mouse to be used in neovim
 	pumheight = 10, -- pop up menu height
 	showmode = false, -- we don't need to see things like -- INSERT -- anymore
 	smartcase = true, -- smart case
@@ -24,19 +24,19 @@ local options = {
 	cursorline = false, -- highlight the current line
 	number = true, -- set numbered lines
 	numberwidth = 2, -- set number column width to 2 {default 4}
-	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+	signcolumn = 'yes', -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- how many lines to keep on screen vertically when scrolling
 	sidescrolloff = 8, -- how many lines to keep on screen horizontally when scrolling
 	laststatus = 3, -- enable global statusline
-	guifont = "JetBrainsMono_Nerd_Font:h15", -- gui font
+	guifont = 'JetBrainsMono_Nerd_Font:h15', -- gui font
 	linespace = 0, -- set line spacing (works only for gui apps)
 }
 
 -- misc settings
-vim.opt.shortmess:append("cI") -- supress `ins-completeion-menu` messages
-vim.cmd("set whichwrap+=<,>,[,],h,l") -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
-vim.cmd("set iskeyword+=-") -- treat words with dashes in them as whole words
+vim.opt.shortmess:append('cI') -- supress `ins-completeion-menu` messages
+vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
+vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
 
 -- load options
 for k, v in pairs(options) do

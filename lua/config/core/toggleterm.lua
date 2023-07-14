@@ -1,19 +1,32 @@
-require("toggleterm").setup({
-  open_mapping = [[<c-\>]],
-  insert_mappings = true,
-  terminal_mappings = true,
+require('toggleterm').setup({
+	open_mapping = [[<c-\>]],
+	insert_mappings = true,
+	terminal_mappings = true,
 })
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
-  cmd = "lazygit",
-  direction = "float",
-  on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
-  end,
+	cmd = 'lazygit',
+	direction = 'float',
+	on_open = function(term)
+		vim.cmd('startinsert!')
+		vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+	end,
 })
 
 function _LAZY_GIT_TOGGLE()
-  lazygit:toggle()
+	lazygit:toggle()
+end
+
+local btop = Terminal:new({
+	cmd = 'btop',
+	direction = 'float',
+	on_open = function(term)
+		vim.cmd('startinsert!')
+		vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+	end,
+})
+
+function _BTOP_TOGGLE()
+	btop:toggle()
 end

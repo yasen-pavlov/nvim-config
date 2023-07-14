@@ -1,15 +1,15 @@
-require("lsp").setup()
-require("mason").setup()
-require("neodev").setup()
+require('lsp').setup()
+require('mason').setup()
+require('neodev').setup()
 
 -- setup mason-lspconfig
-local lspconfig = require("lspconfig")
-local mason_lspconfig = require("mason-lspconfig")
-local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-local schemastore = require("schemastore")
+local lspconfig = require('lspconfig')
+local mason_lspconfig = require('mason-lspconfig')
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local schemastore = require('schemastore')
 
 mason_lspconfig.setup({
-	ensure_installed = { "lua_ls", "jsonls", "yamlls" },
+	ensure_installed = { 'lua_ls', 'jsonls', 'yamlls' },
 })
 
 mason_lspconfig.setup_handlers({
@@ -21,7 +21,7 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 
-	["lua_ls"] = function()
+	['lua_ls'] = function()
 		lspconfig.lua_ls.setup({
 			capabilities = cmp_capabilities,
 			on_init = function(client)
@@ -31,7 +31,7 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 
-	["jsonls"] = function()
+	['jsonls'] = function()
 		lspconfig.jsonls.setup({
 			capabilities = cmp_capabilities,
 			settings = {
@@ -43,7 +43,7 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 
-	["yamlls"] = function()
+	['yamlls'] = function()
 		lspconfig.yamlls.setup({
 			capabilities = cmp_capabilities,
 			settings = {
@@ -51,18 +51,18 @@ mason_lspconfig.setup_handlers({
 					schemaStore = {
 						enable = false,
 					},
-					schemas = require("schemastore").yaml.schemas(),
+					schemas = require('schemastore').yaml.schemas(),
 				},
 			},
 		})
 	end,
 })
 
-local null_ls = require("null-ls")
+local null_ls = require('null-ls')
 null_ls.setup()
 
 -- setup mason-null-ls
-require("mason-null-ls").setup({
-	ensure_installed = { "stylua" },
+require('mason-null-ls').setup({
+	ensure_installed = { 'stylua' },
 	handlers = {},
 })
