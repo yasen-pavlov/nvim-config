@@ -22,13 +22,14 @@ local mappings = {
 	},
 	p = {
 		name = "Plugins",
+		l = { "<Cmd>Lazy<CR>", "Lazy" },
 		i = { "<Cmd>Lazy install<CR>", "Install" },
 		s = { "<Cmd>Lazy sync<CR>", "Sync" },
 		S = { "<Cmd>Lazy clear<CR>", "Status" },
 		c = { "<Cmd>Lazy clean<CR>", "Clean" },
 		u = { "<Cmd>Lazy update<CR>", "Update" },
 		p = { "<Cmd>Lazy profile<CR>", "Profile" },
-		l = { "<Cmd>Lazy log<CR>", "Log" },
+		L = { "<Cmd>Lazy log<CR>", "Log" },
 		d = { "<Cmd>Lazy debug<CR>", "Debug" },
 	},
 	b = {
@@ -55,13 +56,6 @@ local mappings = {
 		C = { "<Cmd>Telescope git_bcommits<CR>", "Checkout commit(for current file)" },
 		d = { "<Cmd>Gitsigns diffthis HEAD<CR>", "Git Diff" },
 	},
-	f = "Format buffer",
-	W = {
-		name = "Workspace",
-		a = { "Add folder to workspace" },
-		r = { "Remove folder from workspace" },
-		l = { "List workspace folders" },
-	},
 	l = {
 		name = "LSP",
 		r = { "Rename all references" },
@@ -70,6 +64,7 @@ local mappings = {
 		m = { "<Cmd>Mason<CR>", "Mason" },
 		i = { "<Cmd>LspInfo<CR>", "Info" },
 	},
+  f = "Format buffer",
 }
 
 local opts = {

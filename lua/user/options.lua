@@ -34,7 +34,7 @@ local options = {
 }
 
 -- misc settings
-vim.opt.shortmess:append("c") -- supress `ins-completeion-menu` messages
+vim.opt.shortmess:append("cI") -- supress `ins-completeion-menu` messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
 vim.cmd("set iskeyword+=-") -- treat words with dashes in them as whole words
 

@@ -50,7 +50,6 @@ return {
 			"famiu/bufdelete.nvim",
 		},
 		config = load_config("bufferline"),
-		version = "*",
 		event = "User FileOpened",
 	},
 
