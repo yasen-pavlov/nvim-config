@@ -23,7 +23,6 @@ local mappings = {
 	},
 	p = {
 		name = 'Plugins',
-		l = { '<Cmd>Lazy<CR>', 'Lazy' },
 		i = { '<Cmd>Lazy install<CR>', 'Install' },
 		s = { '<Cmd>Lazy sync<CR>', 'Sync' },
 		S = { '<Cmd>Lazy clear<CR>', 'Status' },

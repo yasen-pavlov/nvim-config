@@ -78,6 +78,12 @@ lspconfig.bashls.setup({
 	filetypes = { 'sh', 'zsh', 'bash' },
 })
 
+require('mason.settings').set({
+	ui = {
+		border = 'rounded',
+	},
+})
+
 -- null-ls configuration
 require('null-ls').setup()
 require('mason-null-ls').setup({
