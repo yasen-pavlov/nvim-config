@@ -4,9 +4,9 @@ local mappings = {
 	e = { '<Cmd>NvimTreeToggle<CR>', 'Explore' },
 	h = { '<Cmd>WhichKey<CR>', 'Key bindings help' },
 	B = { '<Cmd>Telescope file_browser path=%:p:h select_buffer=true theme=ivy<CR>', 'File Browser' },
-	c = { '<Cmd>noh<CR>', 'Clear search' },
 	u = { '<Cmd>UndotreeToggle<CR>', 'Undo history' },
 	t = { '<Cmd>lua _BTOP_TOGGLE()<CR>', 'Resouce monitor' },
+	['<leader>'] = { '<Cmd>noh<CR>', 'Clear search' },
 	s = {
 		name = 'Search',
 		f = { '<Cmd>Telescope find_files<CR>', 'Find files' },
