@@ -39,7 +39,9 @@ return {
 			'williamboman/mason-lspconfig.nvim',
 			{
 				'williamboman/mason.nvim',
-				build = ':MasonUpdate',
+				build = function()
+					pcall(vim.cmd, 'MasonUpdate')
+				end,
 			},
 			'folke/neodev.nvim',
 			'b0o/schemastore.nvim',
@@ -48,7 +50,7 @@ return {
 		},
 		config = load_config('lsp'),
 		event = { 'BufReadPre', 'BufNewFile' },
-		cmd = { 'LspInfo', 'LspInstall', 'LspUninstall', 'Mason', 'NullLs' },
+		cmd = { 'LspInfo', 'LspInstall', 'LspUninstall', 'Mason', 'NullLs', 'MasonUpdate' },
 	},
 
 	-- Treesitter --
