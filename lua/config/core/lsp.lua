@@ -1,6 +1,8 @@
 local lsp = require('lsp-zero')
 
 lsp.ensure_installed({
+	'lua_ls',
+	'bashls',
 	'jsonls',
 	'yamlls',
 })
@@ -41,6 +43,7 @@ end)
 -- lsp servers configuration
 local lspconfig = require('lspconfig')
 
+--disable lua_ls formatter
 lspconfig.lua_ls.setup({
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
@@ -48,6 +51,7 @@ lspconfig.lua_ls.setup({
 	end,
 })
 
+-- use schemastore for jsonls
 lspconfig.jsonls.setup({
 	settings = {
 		json = {
@@ -57,6 +61,7 @@ lspconfig.jsonls.setup({
 	},
 })
 
+-- use schemastore for yamlls
 lspconfig.yamlls.setup({
 	settings = {
 		yaml = {
@@ -66,6 +71,11 @@ lspconfig.yamlls.setup({
 			schemas = require('schemastore').yaml.schemas(),
 		},
 	},
+})
+
+-- make bash-lsp work with zsh (nvim builtin-lsp)
+lspconfig.bashls.setup({
+	filetypes = { 'sh', 'zsh', 'bash' },
 })
 
 -- null-ls configuration

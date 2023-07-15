@@ -24,7 +24,6 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
 	},
 	window = {
-		-- completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
@@ -36,7 +35,7 @@ cmp.setup({
 
 require('cmp_git').setup()
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+-- Use buffer source for `/` and `?`
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
@@ -44,7 +43,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 	},
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- Use cmdline & path source for ':'
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
