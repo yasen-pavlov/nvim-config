@@ -31,6 +31,7 @@ require('dap-vscode-js').setup({
 	adapters = { 'pwa-node', 'pwa-chrome' },
 })
 
+-- setup js
 local js_based_languages = { 'typescript', 'javascript', 'typescriptreact' }
 
 for _, language in ipairs(js_based_languages) do
@@ -60,6 +61,7 @@ for _, language in ipairs(js_based_languages) do
 	}
 end
 
+-- setup lua
 dap.configurations.lua = {
 	{
 		type = 'nlua',
