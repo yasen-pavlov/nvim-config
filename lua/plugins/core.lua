@@ -52,6 +52,7 @@ return {
 			'simrat39/rust-tools.nvim',
 			'pmizio/typescript-tools.nvim',
 			'nvim-lua/plenary.nvim',
+			'lvimuser/lsp-inlayhints.nvim',
 		},
 		config = load_config('lsp'),
 		event = { 'bufreadpre', 'bufnewfile' },
@@ -62,7 +63,6 @@ return {
 	{
 		'mfussenegger/nvim-dap',
 		dependencies = {
-			'jay-babu/mason-nvim-dap.nvim',
 			'rcarriga/nvim-dap-ui',
 			'theHamsta/nvim-dap-virtual-text',
 			'mxsdev/nvim-dap-vscode-js',
@@ -74,7 +74,6 @@ return {
 		},
 		config = load_config('dap'),
 		event = { 'bufreadpre', 'bufnewfile' },
-		cmd = { 'DapInstall', 'DapUninstall' },
 	},
 
 	-- Treesitter --

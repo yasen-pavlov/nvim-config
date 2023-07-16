@@ -1,8 +1,3 @@
--- setup mason integration
-require('mason-nvim-dap').setup({
-	handlers = {},
-})
-
 -- enable virtual text
 require('nvim-dap-virtual-text').setup()
 

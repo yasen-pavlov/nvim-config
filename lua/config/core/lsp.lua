@@ -14,7 +14,8 @@ lsp.set_sign_icons({
 	info = '',
 })
 
-lsp.on_attach(function(_, bufnr)
+lsp.on_attach(function(client, bufnr)
+	-- configure mappings
 	local wk = require('which-key')
 	local opts = { buffer = bufnr, remap = false }
 
@@ -34,15 +35,33 @@ lsp.on_attach(function(_, bufnr)
 			r = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename all references' },
 			f = { '<Cmd>lua vim.lsp.buf.format({async = true})<CR>', 'Format buffer' },
 			s = { '<Cmd>Telescope lsp_workspace_symbols<CR>', 'Show workspace symbols' },
-			c = { '<Cmd>lua require("rust-tools").hover_actions.hover_actions()<CR>', 'Rust hover actions' },
+			h = { '<Cmd>lua require("lsp-inlayhints").toggle()<CR>', 'Toggle inlay hints' },
+		},
+		['<leader>r'] = {
+			name = 'Rust commands',
+			a = { '<Cmd>RustHoverActions<CR>', 'Hover actions' },
+			r = { '<Cmd>RustRunnables<CR>', 'Run' },
+			d = { '<Cmd>RustDebuggables<CR>', 'Debug' },
+			c = { '<Cmd>RustOpenCargo<CR>', 'Open cargo' },
 		},
 	}, opts)
 
+	-- autoformat on save
 	lsp.buffer_autoformat()
+
+	-- enable inlay hints
+	require('lsp-inlayhints').on_attach(client, bufnr)
 end)
 
 -- add borders to lsp windows
 require('lspconfig.ui.windows').default_options.border = 'single'
+
+-- setup inlay hints
+require('lsp-inlayhints').setup({
+	inlay_hints = {
+		highlight = 'Comment',
+	},
+})
 
 -- lsp servers configuration
 local lspconfig = require('lspconfig')
@@ -53,6 +72,13 @@ lspconfig.lua_ls.setup({
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
+	settings = {
+		Lua = {
+			hint = {
+				enable = true,
+			},
+		},
+	},
 })
 
 -- use schemastore for jsonls
@@ -122,14 +148,37 @@ local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
 
 local rust_tools = require('rust-tools')
 rust_tools.setup({
+	server = {
+		-- on_attach = function(client, bufnr)
+		-- 	require('lsp-inlayhints').on_attach(client, bufnr)
+		-- end,
+	},
+	tools = {
+		inlay_hints = {
+			auto = false,
+		},
+	},
 	dap = {
 		adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
 	},
 })
 
 require('typescript-tools').setup({
-	on_attach = function(client, _)
+	on_attach = function(client, bufnr)
+		-- require('lsp-inlayhints').on_attach(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
+	settings = {
+		tsserver_file_preferences = {
+			includeInlayParameterNameHints = 'all',
+			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			includeInlayFunctionParameterTypeHints = true,
+			includeInlayVariableTypeHints = true,
+			includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+			includeInlayPropertyDeclarationTypeHints = true,
+			includeInlayFunctionLikeReturnTypeHints = true,
+			includeInlayEnumMemberValueHints = true,
+		},
+	},
 })
