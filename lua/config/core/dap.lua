@@ -27,6 +27,7 @@ dap.listeners.before.event_exited['dapui_config'] = function()
 end
 
 require('dap-vscode-js').setup({
+	node_path = '/opt/homebrew/opt/node/bin/node',
 	debugger_path = vim.fn.stdpath('data') .. '/lazy/vscode-js-debug',
 	adapters = { 'pwa-node', 'pwa-chrome' },
 })
