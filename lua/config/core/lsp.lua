@@ -40,11 +40,22 @@ lsp.on_attach(function(_, bufnr)
 	lsp.buffer_autoformat()
 end)
 
+-- add borders to lsp windows
+require('lspconfig.ui.windows').default_options.border = 'single'
+
 -- lsp servers configuration
 local lspconfig = require('lspconfig')
 
 --disable lua_ls formatter
 lspconfig.lua_ls.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentFormattingRangeProvider = false
+	end,
+})
+
+--disable lua_ls formatter
+lspconfig.tsserver.setup({
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
@@ -92,6 +103,19 @@ require('mason-null-ls').setup({
 })
 
 -- neodev setup
-require('neodev').setup()
+require('neodev').setup({
+	library = { plugins = { 'nvim-dap-ui' }, types = true },
+})
+
+-- setup code actions lightbulb
+require('nvim-lightbulb').setup({
+	autocmd = { enabled = true },
+	sign = {
+		enabled = false,
+	},
+	virtual_text = {
+		enabled = true,
+	},
+})
 
 lsp.setup()

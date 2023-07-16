@@ -40,6 +40,7 @@ return {
 			{
 				'williamboman/mason.nvim',
 				build = function()
+					---@diagnostic disable-next-line: param-type-mismatch
 					pcall(vim.cmd, 'MasonUpdate')
 				end,
 			},
@@ -47,10 +48,27 @@ return {
 			'b0o/schemastore.nvim',
 			'jose-elias-alvarez/null-ls.nvim',
 			'jay-babu/mason-null-ls.nvim',
+			'kosayoda/nvim-lightbulb',
 		},
 		config = load_config('lsp'),
-		event = { 'BufReadPre', 'BufNewFile' },
+		event = { 'bufreadpre', 'bufnewfile' },
 		cmd = { 'LspInfo', 'LspInstall', 'LspUninstall', 'Mason', 'NullLs', 'MasonUpdate' },
+	},
+	{
+		'mfussenegger/nvim-dap',
+		dependencies = {
+			'jay-babu/mason-nvim-dap.nvim',
+			'rcarriga/nvim-dap-ui',
+			'theHamsta/nvim-dap-virtual-text',
+			'mxsdev/nvim-dap-vscode-js',
+			{
+				'microsoft/vscode-js-debug',
+				build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+			},
+		},
+		config = load_config('dap'),
+		event = { 'bufreadpre', 'bufnewfile' },
+		cmd = { 'DapInstall', 'DapUninstall' },
 	},
 
 	-- Treesitter --

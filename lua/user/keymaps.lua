@@ -52,6 +52,17 @@ local keymappings = {
 		{ keys = '<A-0>', command = '<Cmd>BufferLineGoToBuffer -1<CR>', desc = 'Go to last buffer' },
 		{ keys = '<A-p>', command = '<Cmd>BufferLineTogglePin<CR>', desc = 'Pin buffer' },
 		{ keys = '<A-c>', command = '<Cmd>Bdelete<CR>', desc = 'Close buffer' },
+
+		-- dap
+		{ keys = '<F5>', command = '<Cmd>lua require("dap").continue()<CR>', desc = 'Debugger start or continue' },
+		{ keys = '<F10>', command = '<Cmd>lua require("dap").step_over()<CR>', desc = 'Debugger step over' },
+		{ keys = '<F11>', command = '<Cmd>lua require("dap").step_into()<CR>', desc = 'Debugger step into' },
+		{ keys = '<F12>', command = '<Cmd>lua require("dap").step_out()<CR>', desc = 'Debugger step out' },
+		{
+			keys = '<C-b>',
+			command = '<Cmd>lua require("dap").toggle_breakpoint()<CR>',
+			desc = 'Debugger toggle breakpoint',
+		},
 	},
 	visual_mode = {
 		{ keys = 'J', command = '<gv', desc = 'Ident left' },
