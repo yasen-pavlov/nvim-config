@@ -55,6 +55,11 @@ local keymappings = {
 
 		-- dap
 		{ keys = '<F5>', command = '<Cmd>lua require("dap").continue()<CR>', desc = 'Debugger start or continue' },
+		{
+			keys = '<F6>',
+			command = '<Cmd>lua require("osv").launch({port = 8086})<CR>',
+			desc = 'Launch lua DAP server',
+		},
 		{ keys = '<F10>', command = '<Cmd>lua require("dap").step_over()<CR>', desc = 'Debugger step over' },
 		{ keys = '<F11>', command = '<Cmd>lua require("dap").step_into()<CR>', desc = 'Debugger step into' },
 		{ keys = '<F12>', command = '<Cmd>lua require("dap").step_out()<CR>', desc = 'Debugger step out' },

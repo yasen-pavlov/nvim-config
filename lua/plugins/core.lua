@@ -54,6 +54,8 @@ return {
 		event = { 'bufreadpre', 'bufnewfile' },
 		cmd = { 'LspInfo', 'LspInstall', 'LspUninstall', 'Mason', 'NullLs', 'MasonUpdate' },
 	},
+
+	-- dap --
 	{
 		'mfussenegger/nvim-dap',
 		dependencies = {
@@ -65,6 +67,7 @@ return {
 				'microsoft/vscode-js-debug',
 				build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
 			},
+			'jbyuki/one-small-step-for-vimkind',
 		},
 		config = load_config('dap'),
 		event = { 'bufreadpre', 'bufnewfile' },
