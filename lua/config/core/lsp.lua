@@ -1,9 +1,14 @@
 local lsp = require('lsp-zero')
 
 lsp.ensure_installed({
-	'lua_ls',
 	'bashls',
+	'emmet_language_server',
+	'eslint',
 	'jsonls',
+	'lua_ls',
+	'pylsp',
+	'rust_analyzer',
+	'tsserver',
 	'yamlls',
 })
 
@@ -61,6 +66,7 @@ require('lsp-inlayhints').setup({
 	inlay_hints = {
 		highlight = 'Comment',
 	},
+	enabled_at_startup = false,
 })
 
 -- lsp servers configuration
@@ -108,6 +114,14 @@ lspconfig.bashls.setup({
 	filetypes = { 'sh', 'zsh', 'bash' },
 })
 
+lspconfig.pylsp.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentFormattingRangeProvider = false
+	end,
+})
+
+-- mason configuration --
 require('mason.settings').set({
 	ui = {
 		border = 'rounded',
@@ -117,7 +131,14 @@ require('mason.settings').set({
 -- null-ls configuration
 require('null-ls').setup()
 require('mason-null-ls').setup({
-	ensure_installed = { 'stylua' },
+	ensure_installed = {
+		'black',
+		'prettierd',
+		'stylua',
+		'js-debug-adapter',
+		'debugpy',
+		'codelldb',
+	},
 	handlers = {},
 })
 
@@ -148,11 +169,6 @@ local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
 
 local rust_tools = require('rust-tools')
 rust_tools.setup({
-	server = {
-		-- on_attach = function(client, bufnr)
-		-- 	require('lsp-inlayhints').on_attach(client, bufnr)
-		-- end,
-	},
 	tools = {
 		inlay_hints = {
 			auto = false,
@@ -164,8 +180,7 @@ rust_tools.setup({
 })
 
 require('typescript-tools').setup({
-	on_attach = function(client, bufnr)
-		-- require('lsp-inlayhints').on_attach(client, bufnr)
+	on_attach = function(client, _)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,

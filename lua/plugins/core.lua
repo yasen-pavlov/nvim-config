@@ -40,8 +40,9 @@ return {
 			{
 				'williamboman/mason.nvim',
 				build = function()
-					---@diagnostic disable-next-line: param-type-mismatch
-					pcall(vim.cmd, 'MasonUpdate')
+					pcall(function()
+						require('mason-registry').refresh()
+					end)
 				end,
 			},
 			'folke/neodev.nvim',
@@ -71,6 +72,7 @@ return {
 				build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
 			},
 			'jbyuki/one-small-step-for-vimkind',
+			'mfussenegger/nvim-dap-python',
 		},
 		config = load_config('dap'),
 		event = { 'bufreadpre', 'bufnewfile' },
