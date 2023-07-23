@@ -16,20 +16,20 @@ local modes = {
 
 local keymappings = {
 	insert_mode = {
-		{ keys = 'jk', command = '<ESC>', desc = 'Homerow ESC alternative' },
+		{ keys = 'jk', command = '<ESC>', desc = 'Exit insert mode' },
 		{ keys = '<A-j>', command = '<Esc>:m .+1<CR>==gi', desc = 'Move line down' },
 		{ keys = '<A-k>', command = '<Esc>:m .-2<CR>==gi', desc = 'Move line up' },
 	},
 	normal_mode = {
 		-- Navigate between splits
-		{ keys = '<C-h>', command = '<C-w>h', desc = 'Move to left split' },
-		{ keys = '<C-j>', command = '<C-w>j', desc = 'Move to split below' },
-		{ keys = '<C-k>', command = '<C-w>k', desc = 'Move to split above' },
-		{ keys = '<C-l>', command = '<C-w>l', desc = 'Move to right split' },
+		{ keys = '<C-h>', command = '<C-w>h', desc = 'Go to the left window' },
+		{ keys = '<C-j>', command = '<C-w>j', desc = 'Go to the down window' },
+		{ keys = '<C-k>', command = '<C-w>k', desc = 'Go to the up window' },
+		{ keys = '<C-l>', command = '<C-w>l', desc = 'Go to the right window' },
 
 		-- Move current line
-		{ keys = '<A-j>', command = '<Cmd>m .+1<CR>==', desc = 'Move line down' },
-		{ keys = '<A-k>', command = '<Cmd>m .-2<CR>==', desc = 'Move line up' },
+		{ keys = '<A-j>', command = ':m .+1<CR>==', desc = 'Move line down' },
+		{ keys = '<A-k>', command = ':m .-2<CR>==', desc = 'Move line up' },
 
 		-- Telescope
 		{ keys = '<C-f>', command = '<Cmd>Telescope live_grep theme=dropdown<CR>', desc = 'Find in files' },
@@ -60,20 +60,31 @@ local keymappings = {
 			command = '<Cmd>lua require("osv").launch({port = 8086})<CR>',
 			desc = 'Launch lua DAP server',
 		},
+		{ keys = '<F7>', command = '<Cmd>lua require("dapui").toggle()<CR>', desc = 'Toggle debugger UI' },
 		{ keys = '<F10>', command = '<Cmd>lua require("dap").step_over()<CR>', desc = 'Debugger step over' },
-		{ keys = '<F11>', command = '<Cmd>lua require("dap").step_into()<CR>', desc = 'Debugger step into' },
+		{ keys = '<S-F10>', command = '<Cmd>lua require("dap").step_into()<CR>', desc = 'Debugger step into' },
 		{ keys = '<F12>', command = '<Cmd>lua require("dap").step_out()<CR>', desc = 'Debugger step out' },
 		{
 			keys = '<C-b>',
 			command = '<Cmd>lua require("dap").toggle_breakpoint()<CR>',
 			desc = 'Debugger toggle breakpoint',
 		},
+		{ keys = '<A-d>', command = 'Vyp', desc = 'Duplicate line' },
 	},
 	visual_mode = {
+		{ keys = '<A-j>', command = ":m '>+1<CR>gv=gv", desc = 'Move selected text down' },
+		{ keys = '<A-k>', command = ":m '<-2<CR>gv=gv", desc = 'Move selected text up' },
 		{ keys = 'J', command = '<gv', desc = 'Ident left' },
 		{ keys = 'K', command = '>gv', desc = 'Ident right' },
-		{ keys = '<A-j>', command = "<Cmd>m '>+1<CR>gv-gv", desc = 'Move selected text down' },
-		{ keys = '<A-k>', command = "<Cmd>m '<-2<CR>gv-gv", desc = 'Move selected text up' },
+		{ keys = 'p', command = 'p:let @+=@0<CR>', desc = 'restore register contents after put' },
+	},
+	term_mode = {
+		{ keys = 'jk', command = '<C-\\><C-n>', desc = 'Exit insert mode' },
+		{ keys = '<C-h>', command = '<Cmd>wincmd h<CR>', desc = 'Go to the left window' },
+		{ keys = '<C-j>', command = '<Cmd>wincmd j<CR>', desc = 'Go to the down window' },
+		{ keys = '<C-k>', command = '<Cmd>wincmd k<CR>', desc = 'Go to the up window' },
+		{ keys = '<C-l>', command = '<Cmd>wincmd l<CR>', desc = 'Go to the right window' },
+		{ keys = '<C-w>', command = '<C-\\><C-n><C-w>', desc = 'Go to the right window' },
 	},
 }
 

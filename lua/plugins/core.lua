@@ -57,7 +57,7 @@ return {
 		},
 		config = load_config('lsp'),
 		event = { 'bufreadpre', 'bufnewfile' },
-		cmd = { 'LspInfo', 'LspInstall', 'LspUninstall', 'Mason', 'NullLs', 'MasonUpdate' },
+		cmd = { 'LspStart', 'LspInfo', 'LspInstall', 'LspUninstall', 'Mason', 'NullLs', 'MasonUpdate' },
 	},
 
 	-- dap --
@@ -107,6 +107,7 @@ return {
 		'nvim-telescope/telescope.nvim',
 		dependencies = {
 			'nvim-lua/plenary.nvim', -- utility functions
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 			'nvim-telescope/telescope-file-browser.nvim', -- file browser for telescope
 			'nvim-telescope/telescope-ui-select.nvim', -- vim ui select with telescope
 		},
@@ -158,5 +159,17 @@ return {
 		'akinsho/toggleterm.nvim',
 		config = load_config('toggleterm'),
 		event = 'VimEnter',
+	},
+
+	-- copilot
+	{
+		'zbirenbaum/copilot.lua',
+		opts = {
+			suggestion = {
+				auto_trigger = true,
+			},
+		},
+		cmd = 'Copilot',
+		event = 'InsertEnter',
 	},
 }
