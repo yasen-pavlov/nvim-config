@@ -172,4 +172,10 @@ return {
 		cmd = 'Copilot',
 		event = 'InsertEnter',
 	},
+
+	-- diffview
+	{
+		'sindrets/diffview.nvim',
+		cmd = { 'DiffviewOpen' },
+	},
 }
