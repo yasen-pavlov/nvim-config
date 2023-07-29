@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 require('bufferline').setup({
 	options = {
 		close_command = 'Bdelete! %d',
