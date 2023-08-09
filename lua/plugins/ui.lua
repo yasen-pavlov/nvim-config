@@ -65,4 +65,11 @@ return {
 		'lukas-reineke/indent-blankline.nvim',
 		event = 'User FileOpened',
 	},
+
+	-- nvim-highlight-colors
+	{
+		'brenoprata10/nvim-highlight-colors',
+		config = load_config('highlight-colors'),
+		event = 'User FileOpened',
+	},
 }

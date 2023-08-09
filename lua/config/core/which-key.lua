@@ -6,6 +6,7 @@ local mappings = {
 	B = { '<Cmd>Telescope file_browser path=%:p:h select_buffer=true theme=ivy<CR>', 'File Browser' },
 	u = { '<Cmd>UndotreeToggle<CR>', 'Undo history' },
 	t = { '<Cmd>lua _BTOP_TOGGLE()<CR>', 'Resouce monitor' },
+	C = { '<Cmd>Colortils<CR>', 'Color picker' },
 	['<leader>'] = { '<Cmd>noh<CR>', 'Clear search' },
 	s = {
 		name = 'Search',
@@ -61,7 +62,8 @@ local mappings = {
 	l = {
 		name = 'LSP',
 		m = { '<Cmd>Mason<CR>', 'Mason' },
-		i = { '<Cmd>LspInfo<CR>', 'Info' },
+		i = { '<Cmd>LspInfo<CR>', 'Show LSP Info' },
+		n = { '<Cmd>NullLsInfo<CR>', 'Show null-ls info' },
 	},
 }
 
