@@ -10,6 +10,8 @@ lsp.ensure_installed({
 	'rust_analyzer',
 	'tsserver',
 	'yamlls',
+	'cssls',
+	'cssmodules_ls',
 })
 
 lsp.set_sign_icons({
@@ -33,10 +35,10 @@ lsp.on_attach(function(client, bufnr)
 			r = { '<Cmd>Telescope lsp_references<CR>', 'Show references' },
 		},
 		K = { '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Show hover info' },
+		['<C-a>'] = { '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Select code action' },
 		['[d'] = { '<Cmd>lua vim.diagnostic.goto_prev()<CR>', 'Previous diagnostic' },
 		[']d'] = { '<Cmd>lua vim.diagnostic.goto_next()<CR>', 'Next diagnostic' },
 		['<leader>l'] = {
-			a = { '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Select code action' },
 			r = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename all references' },
 			f = { '<Cmd>lua vim.lsp.buf.format({async = true})<CR>', 'Format buffer' },
 			s = { '<Cmd>Telescope lsp_workspace_symbols<CR>', 'Show workspace symbols' },
@@ -64,6 +66,7 @@ config_ls('json')
 config_ls('lua')
 config_ls('python')
 config_ls('yaml')
+config_ls('css')
 
 -- disable language servers that have their own plugins
 lsp.skip_server_setup({ 'rust_analyzer', 'tsserver' })

@@ -43,6 +43,12 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+-- remove disable mouse entry from context menu
+vim.cmd('aunmenu PopUp.How-to\\ disable\\ mouse')
+vim.cmd('aunmenu PopUp.-1-')
+
 -- neovide settings
 -- vim.g.neovide_refresh_rate = 144
-vim.g.neovide_cursor_animation_length = 0.03
+vim.g.neovide_input_macos_alt_is_meta = true
+vim.g.neovide_cursor_animation_length = 0.00
+vim.opt.linespace = 0

@@ -50,7 +50,7 @@ local keymappings = {
 		{ keys = '<A-8>', command = '<Cmd>BufferLineGoToBuffer 8<CR>', desc = 'Go to buffer 8' },
 		{ keys = '<A-9>', command = '<Cmd>BufferLineGoToBuffer 9<CR>', desc = 'Go to buffer 9' },
 		{ keys = '<A-0>', command = '<Cmd>BufferLineGoToBuffer -1<CR>', desc = 'Go to last buffer' },
-		{ keys = '<A-p>', command = '<Cmd>BufferLineTogglePin<CR>', desc = 'Pin buffer' },
+		{ keys = '<A-P>', command = '<Cmd>BufferLineTogglePin<CR>', desc = 'Pin buffer' },
 		{ keys = '<A-c>', command = '<Cmd>Bdelete<CR>', desc = 'Close buffer' },
 
 		-- dap

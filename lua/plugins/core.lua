@@ -37,7 +37,6 @@ return {
 			'nvim-lua/plenary.nvim', -- utility functions
 			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 			'nvim-telescope/telescope-file-browser.nvim', -- file browser for telescope
-			'nvim-telescope/telescope-ui-select.nvim', -- vim ui select with telescope
 		},
 		config = load_config('telescope'),
 		cmd = 'Telescope',

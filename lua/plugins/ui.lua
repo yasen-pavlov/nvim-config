@@ -72,4 +72,9 @@ return {
 		config = load_config('highlight-colors'),
 		event = 'User FileOpened',
 	},
+	{
+		'stevearc/dressing.nvim',
+		pots = {},
+		event = 'VimEnter',
+	},
 }
