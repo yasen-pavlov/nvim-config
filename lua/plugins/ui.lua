@@ -72,9 +72,18 @@ return {
 		config = load_config('highlight-colors'),
 		event = 'User FileOpened',
 	},
+
+	-- dressing
 	{
 		'stevearc/dressing.nvim',
-		pots = {},
+		opts = {},
 		event = 'VimEnter',
+	},
+
+	-- colortils
+	{
+		'max397574/colortils.nvim',
+		opts = {},
+		cmd = { 'Colortils' },
 	},
 }

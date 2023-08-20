@@ -106,10 +106,9 @@ return {
 		cmd = { 'DiffviewOpen' },
 	},
 
-	-- colortils
+	-- tmux-navigator
 	{
-		'max397574/colortils.nvim',
-		opts = {},
-		cmd = { 'Colortils' },
+		'christoomey/vim-tmux-navigator',
+		event = 'VimEnter',
 	},
 }
