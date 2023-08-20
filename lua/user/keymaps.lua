@@ -2,7 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local opts = { noremap = false, silent = false }
+local opts = { noremap = false, silent = true }
 
 local modes = {
 	insert_mode = 'i',
@@ -24,6 +24,12 @@ local keymappings = {
 		-- Move current line
 		{ keys = '<A-j>', command = ':m .+1<CR>==', desc = 'Move line down' },
 		{ keys = '<A-k>', command = ':m .-2<CR>==', desc = 'Move line up' },
+
+		-- Resize current pane
+		{ keys = '<A-Up>', command = ':resize -2<CR>', desc = 'Resize current pane up' },
+		{ keys = '<A-Down>', command = ':resize +2<CR>', desc = 'Resize current pane down' },
+		{ keys = '<A-Left>', command = ':vertical resize -2<CR>', desc = 'Resize current pane left' },
+		{ keys = '<A-Right>', command = ':vertical resize +2<CR>', desc = 'Resize current pane right' },
 
 		-- Telescope
 		{ keys = '<C-f>', command = '<Cmd>Telescope live_grep theme=dropdown<CR>', desc = 'Find in files' },
