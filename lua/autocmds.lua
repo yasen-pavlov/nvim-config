@@ -9,6 +9,18 @@ local groups = {
 local autocmds = {
 
 	{
+		events = { 'BufNewFile', 'BufRead' },
+		opts = {
+			group = groups.settings,
+			desc = 'Set js files to javascriptreact filetype',
+			pattern = '*.js',
+			callback = function()
+				vim.cmd('set filetype=javascriptreact')
+			end,
+		},
+	},
+
+	{
 		events = { 'BufEnter' },
 		opts = {
 			group = groups.settings,

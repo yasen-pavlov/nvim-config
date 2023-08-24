@@ -1,6 +1,7 @@
 require('lsp-zero.cmp').extend({
 	set_extra_mappings = true,
 })
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
@@ -18,6 +19,8 @@ cmp.setup({
 		['<Tab>'] = cmp_action.luasnip_supertab(),
 		['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
+		['<C-f>'] = cmp_action.luasnip_jump_forward(),
+		['<C-b>'] = cmp_action.luasnip_jump_backward(),
 	},
 	window = {
 		documentation = cmp.config.window.bordered(),
@@ -35,6 +38,10 @@ cmp.setup({
 		}),
 	},
 })
+
+-- configure cmp integration
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 require('cmp_git').setup()
 
