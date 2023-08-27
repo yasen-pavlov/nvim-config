@@ -33,15 +33,15 @@ local options = {
 	linespace = 0, -- set line spacing (works only for gui apps)
 }
 
--- misc settings
-vim.opt.shortmess:append('cI') -- supress `ins-completeion-menu` messages
-vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
-vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
-
 -- load options
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+-- misc settings
+vim.opt.shortmess:append('cI') -- supress `ins-completeion-menu` messages
+vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
+vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
 
 -- remove disable mouse entry from context menu
 vim.cmd('aunmenu PopUp.How-to\\ disable\\ mouse')

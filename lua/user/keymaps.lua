@@ -84,7 +84,6 @@ local keymappings = {
 		{ keys = '<C-j>', command = '<Cmd>wincmd j<CR>', desc = 'Go to the down window' },
 		{ keys = '<C-k>', command = '<Cmd>wincmd k<CR>', desc = 'Go to the up window' },
 		{ keys = '<C-l>', command = '<Cmd>wincmd l<CR>', desc = 'Go to the right window' },
-		{ keys = '<C-w>', command = '<C-\\><C-n><C-w>', desc = 'Go to the right window' },
 	},
 }
 

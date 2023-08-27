@@ -40,7 +40,7 @@ require('dap-vscode-js').setup({
 	adapters = { 'pwa-node', 'pwa-chrome' },
 })
 
-local js_based_languages = { 'typescript', 'javascript', 'typescriptreact' }
+local js_based_languages = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }
 
 for _, language in ipairs(js_based_languages) do
 	require('dap').configurations[language] = {
