@@ -56,8 +56,9 @@ local mappings = {
 		c = { '<Cmd>Telescope git_commits<CR>', 'Checkout commit' },
 		C = { '<Cmd>Telescope git_bcommits<CR>', 'Checkout commit(for current file)' },
 		d = { '<Cmd>Gitsigns diffthis HEAD<CR>', 'Git Diff' },
-		v = { '<Cmd>DiffviewOpen<CR>', 'Open diffview ' },
-		V = { '<Cmd>DiffviewClose<CR>', 'Close diffview ' },
+		v = { '<Cmd>DiffviewOpen<CR>', 'Open diffview' },
+		V = { '<Cmd>DiffviewClose<CR>', 'Close diffview' },
+		y = { 'Copy git link' },
 	},
 	l = {
 		name = 'LSP',

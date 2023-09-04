@@ -111,4 +111,10 @@ return {
 		'christoomey/vim-tmux-navigator',
 		event = 'VimEnter',
 	},
+
+	-- gitlinker
+	{
+		'ruifm/gitlinker.nvim',
+		opts = {},
+	},
 }

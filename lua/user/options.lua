@@ -22,7 +22,8 @@ local options = {
 	shiftwidth = 2, -- the number of spaces inserted for each indentation
 	tabstop = 2, -- insert 2 spaces for a tab
 	cursorline = false, -- highlight the current line
-	number = true, -- set numbered lines
+	number = true, -- set numbered lines (shows only current line when used with relative)
+	relativenumber = true, -- set relative numbered lines
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = 'yes', -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
@@ -48,7 +49,6 @@ vim.cmd('aunmenu PopUp.How-to\\ disable\\ mouse')
 vim.cmd('aunmenu PopUp.-1-')
 
 -- neovide settings
--- vim.g.neovide_refresh_rate = 144
 vim.g.neovide_input_macos_alt_is_meta = true
 vim.g.neovide_cursor_animation_length = 0.00
 vim.opt.linespace = 0
