@@ -116,5 +116,13 @@ return {
 	{
 		'ruifm/gitlinker.nvim',
 		opts = {},
+		event = 'User FileOpened',
+	},
+
+	-- bigfile
+	{
+		'LunarVim/bigfile.nvim',
+		config = load_config('bigfile'),
+		event = { 'FileReadPre', 'BufReadPre', 'User FileOpened' },
 	},
 }
