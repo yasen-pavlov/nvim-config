@@ -125,4 +125,11 @@ return {
 		config = load_config('bigfile'),
 		event = { 'FileReadPre', 'BufReadPre', 'User FileOpened' },
 	},
+	{
+		'folke/trouble.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {},
+		cmd = { 'TroubleToggle' },
+		event = { 'InsertEnter', 'CmdlineEnter' },
+	},
 }

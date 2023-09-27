@@ -12,6 +12,7 @@ return {
 		lazy = false,
 		config = load_config('material'),
 		priority = 1000,
+		event = 'VimEnter',
 	},
 
 	-- lualine

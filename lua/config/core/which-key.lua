@@ -7,6 +7,7 @@ local mappings = {
 	u = { '<Cmd>UndotreeToggle<CR>', 'Undo history' },
 	T = { '<Cmd>lua _BTOP_TOGGLE()<CR>', 'Resouce monitor' },
 	C = { '<Cmd>Colortils<CR>', 'Color picker' },
+	t = { '<Cmd>TroubleToggle<CR>', 'Open trouble' },
 	['<leader>'] = { '<Cmd>noh<CR>', 'Clear search' },
 	s = {
 		name = 'Search',
