@@ -1,27 +1,14 @@
-local lsp = require('lsp-zero')
+local lsp_zero = require('lsp-zero')
+lsp_zero.extend_lspconfig()
 
-lsp.ensure_installed({
-	'bashls',
-	'emmet_language_server',
-	'eslint',
-	'jsonls',
-	'lua_ls',
-	'pylsp',
-	'rust_analyzer',
-	'tsserver',
-	'yamlls',
-	'cssls',
-	'cssmodules_ls',
-})
-
-lsp.set_sign_icons({
+lsp_zero.set_sign_icons({
 	error = '',
 	warn = '',
 	hint = '',
 	info = '',
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
 	-- configure mappings
 	local wk = require('which-key')
 	local opts = { buffer = bufnr, remap = false }
@@ -47,7 +34,7 @@ lsp.on_attach(function(client, bufnr)
 	}, opts)
 
 	-- autoformat on save
-	lsp.buffer_autoformat()
+	lsp_zero.buffer_autoformat()
 
 	-- enable inlay hints
 	require('lsp-inlayhints').on_attach(client, bufnr)
@@ -55,20 +42,3 @@ end)
 
 -- add borders to lsp windows
 require('lspconfig.ui.windows').default_options.border = 'single'
-
--- load language specific configurations
-local config_ls = function(name)
-	require('config.ide.languages.' .. name)
-end
-
-config_ls('bash')
-config_ls('json')
-config_ls('lua')
-config_ls('python')
-config_ls('yaml')
-config_ls('css')
-
--- disable language servers that have their own plugins
-lsp.skip_server_setup({ 'rust_analyzer', 'tsserver' })
-
-lsp.setup()

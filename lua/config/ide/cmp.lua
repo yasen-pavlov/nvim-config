@@ -1,6 +1,5 @@
-require('lsp-zero.cmp').extend({
-	set_extra_mappings = true,
-})
+local lsp_zero = require('lsp-zero')
+lsp_zero.extend_cmp()
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
@@ -8,6 +7,10 @@ local cmp_action = require('lsp-zero').cmp_action()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
+	preselect = 'item',
+	completion = {
+		completeopt = 'menu,menuone,noinsert',
+	},
 	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
@@ -15,13 +18,13 @@ cmp.setup({
 		{ name = 'path' },
 		{ name = 'git' },
 	},
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
 		['<Tab>'] = cmp_action.luasnip_supertab(),
 		['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
 		['<C-f>'] = cmp_action.luasnip_jump_forward(),
 		['<C-b>'] = cmp_action.luasnip_jump_backward(),
-	},
+	}),
 	window = {
 		documentation = cmp.config.window.bordered(),
 	},
@@ -39,10 +42,11 @@ cmp.setup({
 	},
 })
 
--- configure cmp integration
+-- configure autopairs cmp integration
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
+-- setup cmp_git
 require('cmp_git').setup()
 
 -- Use buffer source for `/` and `?`

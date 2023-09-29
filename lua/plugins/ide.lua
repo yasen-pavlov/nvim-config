@@ -8,9 +8,13 @@ return {
 	-- lsp-zero --
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v3.x',
 		lazy = true,
-		config = load_config('lsp-zero'),
+		config = false,
+		init = function()
+			vim.g.lsp_zero_extend_cmp = 0
+			vim.g.lsp_zero_extend_lspconfig = 0
+		end,
 	},
 
 	-- cmp --
@@ -126,5 +130,14 @@ return {
 			'typescriptreact',
 			'typescript.tsx',
 		},
+	},
+
+	-- trouble --
+	{
+		'folke/trouble.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {},
+		cmd = { 'TroubleToggle' },
+		event = { 'InsertEnter', 'CmdlineEnter' },
 	},
 }
