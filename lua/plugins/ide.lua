@@ -80,7 +80,7 @@ return {
 
 	-- null-ls --
 	{
-		'jose-elias-alvarez/null-ls.nvim',
+		'nvimtools/none-ls.nvim',
 		dependencies = {
 			'jay-babu/mason-null-ls.nvim',
 		},
@@ -114,13 +114,6 @@ return {
 	-- typescript-tools --
 	{
 		'pmizio/typescript-tools.nvim',
-		dependencies = {
-			'mxsdev/nvim-dap-vscode-js',
-			{
-				'microsoft/vscode-js-debug',
-				build = 'npm ci --legacy-peer-deps && npx gulp vsDebugServerBundle && rm -rf out && mv dist out',
-			},
-		},
 		config = load_config('languages/typescript'),
 		ft = {
 			'javascript',
@@ -139,5 +132,19 @@ return {
 		opts = {},
 		cmd = { 'TroubleToggle' },
 		event = { 'InsertEnter', 'CmdlineEnter' },
+	},
+
+	-- clangd extensions --
+	{
+		'p00f/clangd_extensions.nvim',
+		config = load_config('languages/c'),
+		ft = {
+			'c',
+			'cpp',
+			'objc',
+			'objcpp',
+			'opencl',
+			'arduino',
+		},
 	},
 }

@@ -83,7 +83,7 @@ return {
 
 	-- colortils
 	{
-		'max397574/colortils.nvim',
+		'yasen-pavlov/colortils.nvim',
 		opts = {},
 		cmd = { 'Colortils' },
 	},

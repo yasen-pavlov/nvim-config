@@ -33,38 +33,98 @@ require('typescript-tools').setup({
 	},
 })
 
--- dap configuration
-require('dap-vscode-js').setup({
-	node_path = '/opt/homebrew/opt/node/bin/node',
-	debugger_path = vim.fn.stdpath('data') .. '/lazy/vscode-js-debug',
-	adapters = { 'pwa-node', 'pwa-chrome' },
-})
+local function get_js_debug()
+	local install_path = require('mason-registry').get_package('js-debug-adapter'):get_install_path()
+	return install_path .. '/js-debug/src/dapDebugServer.js'
+end
 
-local js_based_languages = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }
-
-for _, language in ipairs(js_based_languages) do
-	require('dap').configurations[language] = {
-		{
-			type = 'pwa-chrome',
-			request = 'launch',
-			name = 'Start Chrome with "localhost"',
-			url = 'http://localhost:3000',
-			webRoot = '${workspaceFolder}',
-			userDataDir = '${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir',
+for _, adapter in ipairs({ 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }) do
+	require('dap').adapters[adapter] = {
+		type = 'server',
+		host = 'localhost',
+		port = '${port}',
+		executable = {
+			command = 'node',
+			args = {
+				get_js_debug(),
+				'${port}',
+			},
 		},
+	}
+end
+
+for _, language in ipairs({ 'typescript', 'javascript' }) do
+	require('dap').configurations[language] = {
 		{
 			type = 'pwa-node',
 			request = 'launch',
-			name = 'Launch file in node',
+			name = 'Launch file',
 			program = '${file}',
 			cwd = '${workspaceFolder}',
 		},
 		{
 			type = 'pwa-node',
 			request = 'attach',
-			name = 'Attach file to node',
+			name = 'Attach',
 			processId = require('dap.utils').pick_process,
 			cwd = '${workspaceFolder}',
+		},
+		{
+			type = 'pwa-node',
+			request = 'launch',
+			name = 'Debug Jest Tests',
+			runtimeExecutable = 'node',
+			runtimeArgs = {
+				'./node_modules/jest/bin/jest.js',
+				'--runInBand',
+			},
+			rootPath = '${workspaceFolder}',
+			cwd = '${workspaceFolder}',
+			console = 'integratedTerminal',
+			internalConsoleOptions = 'neverOpen',
+		},
+		{
+			type = 'pwa-chrome',
+			name = 'Attach - Remote Debugging',
+			request = 'attach',
+			program = '${file}',
+			cwd = vim.fn.getcwd(),
+			sourceMaps = true,
+			protocol = 'inspector',
+			port = 9222,
+			webRoot = '${workspaceFolder}',
+		},
+		{
+			type = 'pwa-chrome',
+			name = 'Launch Chrome',
+			request = 'launch',
+			url = 'http://localhost:3000',
+			webRoot = '${workspaceFolder}',
+			userDataDir = '${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir',
+		},
+	}
+end
+
+for _, language in ipairs({ 'typescriptreact', 'javascriptreact' }) do
+	require('dap').configurations[language] = {
+		{
+			type = 'pwa-chrome',
+			name = 'Attach - Remote Debugging',
+			request = 'attach',
+			program = '${file}',
+			cwd = vim.fn.getcwd(),
+			sourceMaps = true,
+			protocol = 'inspector',
+			port = 9222,
+			webRoot = '${workspaceFolder}',
+		},
+		{
+			type = 'pwa-chrome',
+			name = 'Launch Chrome',
+			request = 'launch',
+			url = 'http://localhost:3000',
+			webRoot = '${workspaceFolder}',
+			userDataDir = '${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir',
 		},
 	}
 end

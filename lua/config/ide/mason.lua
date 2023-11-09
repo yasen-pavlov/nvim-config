@@ -27,6 +27,7 @@ require('mason-lspconfig').setup({
 		'yamlls',
 		'cssls',
 		'cssmodules_ls',
+		'clangd',
 	},
 	handlers = {
 		lsp_zero.default_setup,
