@@ -1,5 +1,5 @@
 require('go').setup({
-	lsp_cfg = false,
+	lsp_cfg = true,
 	lsp_gofumpt = true,
 	lsp_on_attach = function(_, bufnr)
 		local wk = require('which-key')
