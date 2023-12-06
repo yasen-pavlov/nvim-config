@@ -8,6 +8,8 @@ require('mason-null-ls').setup({
 		'debugpy',
 		'codelldb',
 		'beautysh',
+		'delve',
+		'golangci_lint',
 	},
 	handlers = {},
 })
