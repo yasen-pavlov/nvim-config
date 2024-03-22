@@ -1,5 +1,26 @@
+-- misc settings
+vim.opt.shortmess:append('cI') -- supress `ins-completeion-menu` messages
+vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
+vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
+
+-- remove disable mouse entry from context menu
+vim.cmd('aunmenu PopUp.How-to\\ disable\\ mouse')
+vim.cmd('aunmenu PopUp.-1-')
+
+-- neovide settings
+vim.g.neovide_input_macos_alt_is_meta = true
+vim.g.neovide_cursor_animation_length = 0.00
+vim.opt.linespace = 0
+
+-- ts context commentstring settings
+vim.g.skip_ts_context_commentstring_module = true
+
+-- remap leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- options
-local options = {
+return {
 	clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
@@ -33,25 +54,3 @@ local options = {
 	guifont = 'JetBrainsMono_Nerd_Font:h15', -- gui font
 	linespace = 0, -- set line spacing (works only for gui apps)
 }
-
--- load options
-for k, v in pairs(options) do
-	vim.opt[k] = v
-end
-
--- misc settings
-vim.opt.shortmess:append('cI') -- supress `ins-completeion-menu` messages
-vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
-vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
-
--- remove disable mouse entry from context menu
-vim.cmd('aunmenu PopUp.How-to\\ disable\\ mouse')
-vim.cmd('aunmenu PopUp.-1-')
-
--- neovide settings
-vim.g.neovide_input_macos_alt_is_meta = true
-vim.g.neovide_cursor_animation_length = 0.00
-vim.opt.linespace = 0
-
--- ts context commentstring settings
-vim.g.skip_ts_context_commentstring_module = true

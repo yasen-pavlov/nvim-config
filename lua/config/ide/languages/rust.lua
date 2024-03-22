@@ -1,6 +1,7 @@
 local extension_path = vim.fn.stdpath('data') .. '/mason/packages/codelldb/extension/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+local mappings = require('user.keymaps').languages.rust
 
 local rust_tools = require('rust-tools')
 rust_tools.setup({
@@ -9,15 +10,7 @@ rust_tools.setup({
 			local wk = require('which-key')
 			local opts = { buffer = bufnr, remap = false }
 
-			wk.register({
-				['<leader>r'] = {
-					name = 'Rust',
-					a = { '<Cmd>RustHoverActions<CR>', 'Hover actions' },
-					r = { '<Cmd>RustRunnables<CR>', 'Run' },
-					d = { '<Cmd>RustDebuggables<CR>', 'Debug' },
-					c = { '<Cmd>RustOpenCargo<CR>', 'Open cargo' },
-				},
-			}, opts)
+			wk.register(mappings, opts)
 		end,
 	},
 	tools = {

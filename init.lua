@@ -1,4 +1,4 @@
-require('user.options')
-require('user.keymaps')
-require('plugin_manager')
-require('autocmds')
+require('util.options_loader')
+require('util.keymaps_loader')
+require('util.plugin_manager')
+require('util.autocmds')

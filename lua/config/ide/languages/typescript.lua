@@ -1,3 +1,5 @@
+local mappings = require('user.keymaps').languages.typescript
+
 require('typescript-tools').setup({
 	on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
@@ -6,18 +8,7 @@ require('typescript-tools').setup({
 		local wk = require('which-key')
 		local opts = { buffer = bufnr, remap = false }
 
-		wk.register({
-			['<leader>t'] = {
-				name = 'Typescript',
-				i = { '<Cmd>TSToolsOrganizeImports<CR>', 'Sort and organize imports' },
-				s = { '<Cmd>TSToolsSortImports<CR>', 'Sort imports' },
-				r = { '<Cmd>TSToolsRemoveUnusedImports<CR>', 'Remove unused imports' },
-				R = { '<Cmd>TSToolsRemoveUnused<CR>', 'Remove all unused statements' },
-				m = { '<Cmd>TSToolsAddMissingImports<CR>', 'Add missing imports' },
-				a = { '<Cmd>TSToolsFixAll<CR>', 'Fix all fixable errors' },
-				g = { '<Cmd>TSToolsGoToSourceDefinition<CR>', 'Go to source definition' },
-			},
-		}, opts)
+		wk.register(mappings, opts)
 	end,
 	settings = {
 		tsserver_file_preferences = {

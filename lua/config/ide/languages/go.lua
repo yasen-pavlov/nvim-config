@@ -1,3 +1,5 @@
+local mappings = require('user.keymaps').languages.go
+
 require('go').setup({
 	lsp_cfg = true,
 	lsp_gofumpt = true,
@@ -5,14 +7,7 @@ require('go').setup({
 		local wk = require('which-key')
 		local opts = { buffer = bufnr, remap = false }
 
-		wk.register({
-			['<leader>o'] = {
-				name = 'Go',
-				r = { '<Cmd>GoRun<CR>', 'Run' },
-				d = { '<Cmd>GoDebug<CR>', 'Debug' },
-				c = { '<Cmd>GoCodeLenAct<CR>', 'Codelens' },
-			},
-		}, opts)
+		wk.register(mappings, opts)
 	end,
 	trouble = true,
 	luasnip = true,
