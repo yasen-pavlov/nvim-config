@@ -97,6 +97,7 @@ return {
 			'theHamsta/nvim-dap-virtual-text',
 			'jbyuki/one-small-step-for-vimkind',
 			'mfussenegger/nvim-dap-python',
+			'nvim-neotest/nvim-nio',
 		},
 		config = load_config('dap'),
 		event = { 'BufReadPre', 'BufNewFile' },

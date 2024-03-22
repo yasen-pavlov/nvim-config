@@ -7,9 +7,9 @@ require('mason-null-ls').setup({
 		'js-debug-adapter',
 		'debugpy',
 		'codelldb',
-		'beautysh',
 		'delve',
 		'golangci_lint',
+		'shfmt',
 	},
 	handlers = {},
 })

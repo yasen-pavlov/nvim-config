@@ -10,23 +10,33 @@ require('material').setup({
 	},
 	plugins = { -- Uncomment the plugins that you use to highlight them
 		-- Available plugins:
-		-- 'dap',
-		-- 'dashboard',
+		'dap',
+		-- "dashboard",
+		-- "eyeliner",
+		-- "fidget",
+		-- "flash",
 		'gitsigns',
-		-- 'hop',
+		-- "harpoon",
+		-- "hop",
+		'illuminate',
 		'indent-blankline',
-		-- 'lspsaga',
-		-- 'mini',
-		-- 'neogit',
-		-- 'neorg',
+		-- "lspsaga",
+		-- "mini",
+		-- "neogit",
+		-- "neotest",
+		-- "neo-tree",
+		-- "neorg",
+		-- "noice",
 		'nvim-cmp',
-		-- 'nvim-navic',
+		-- "nvim-navic",
 		'nvim-tree',
 		'nvim-web-devicons',
-		-- 'sneak',
+		'rainbow-delimiters',
+		-- "sneak",
 		'telescope',
-		-- 'trouble',
+		'trouble',
 		'which-key',
+		'nvim-notify',
 	},
 	disable = {
 		colored_cursor = false, -- Disable the colored cursor
@@ -40,7 +50,6 @@ require('material').setup({
 		darker = false, -- Enable higher contrast text for darker style
 	},
 	lualine_style = 'stealth',
-
 	custom_colors = function(colors)
 		colors.editor.fg = '#EEFFFF'
 		colors.main.fg_dark = '#B0BEC5'
