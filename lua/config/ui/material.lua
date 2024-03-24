@@ -12,7 +12,7 @@ require('material').setup({
 		-- Available plugins:
 		'dap',
 		-- "dashboard",
-		-- "eyeliner",
+		'eyeliner',
 		'fidget',
 		-- "flash",
 		'gitsigns',

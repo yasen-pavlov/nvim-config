@@ -95,4 +95,11 @@ return {
 		config = load_config('barbecue'),
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
+
+	-- eyeliner
+	{
+		'jinh0/eyeliner.nvim',
+		config = load_config('eyeliner'),
+		event = 'VimEnter',
+	},
 }
