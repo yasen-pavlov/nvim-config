@@ -65,7 +65,7 @@ return {
 	{
 		'j-hui/fidget.nvim',
 		opts = {},
-		event = 'VimEnter',
+		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
 	-- indent lines
@@ -93,5 +93,17 @@ return {
 		'yasen-pavlov/colortils.nvim',
 		opts = {},
 		cmd = { 'Colortils' },
+	},
+
+	-- winbar
+	{
+		'utilyre/barbecue.nvim',
+		name = 'barbecue',
+		version = '*',
+		dependencies = {
+			'SmiteshP/nvim-navic',
+		},
+		config = load_config('barbecue'),
+		event = { 'BufReadPre', 'BufNewFile' },
 	},
 }

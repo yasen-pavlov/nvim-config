@@ -28,7 +28,7 @@ require('material').setup({
 		-- "neorg",
 		-- "noice",
 		'nvim-cmp',
-		-- "nvim-navic",
+		'nvim-navic',
 		'nvim-tree',
 		'nvim-web-devicons',
 		'rainbow-delimiters',

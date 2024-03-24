@@ -18,6 +18,11 @@ local general = {
 		-- Telescope
 		{ keys = '<C-f>', command = '<Cmd>Telescope live_grep theme=dropdown<CR>', desc = 'Find in files' },
 		{ keys = '<C-s>', command = '<Cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find files' },
+		{
+			keys = '<C-i>',
+			command = '<Cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({sort_mru = true}))<CR>',
+			desc = 'Find buffers',
+		},
 
 		-- Buffers
 		{ keys = '<A-,>', command = '<Cmd>BufferLineCyclePrev<CR>', desc = 'Previous buffer' },
