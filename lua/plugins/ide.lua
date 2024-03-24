@@ -56,7 +56,7 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
-	-- lsp-lightbulb --
+	-- lsp-inlayhints --
 	{
 		'lvimuser/lsp-inlayhints.nvim',
 		config = load_config('inlayhints'),
@@ -159,5 +159,16 @@ return {
 		event = { 'CmdlineEnter' },
 		ft = { 'go', 'gomod' },
 		build = ':lua require("go.install").update_all_sync()',
+	},
+
+	-- glow.nvim --
+	{ 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
+
+	-- surround.nvim --
+	{
+		'kylechui/nvim-surround',
+		version = '*',
+		event = 'VeryLazy',
+		config = true,
 	},
 }

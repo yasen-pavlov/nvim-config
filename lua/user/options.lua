@@ -10,6 +10,7 @@ vim.cmd('aunmenu PopUp.-1-')
 -- neovide settings
 vim.g.neovide_input_macos_alt_is_meta = true
 vim.g.neovide_cursor_animation_length = 0.00
+vim.g.neovide_floating_shadow = false
 vim.opt.linespace = 0
 
 -- ts context commentstring settings

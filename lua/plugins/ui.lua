@@ -61,6 +61,13 @@ return {
 		event = 'VimEnter',
 	},
 
+	-- lsp progress
+	{
+		'j-hui/fidget.nvim',
+		opts = {},
+		event = 'VimEnter',
+	},
+
 	-- indent lines
 	{
 		'lukas-reineke/indent-blankline.nvim',
