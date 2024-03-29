@@ -32,6 +32,7 @@ return {
 			'nvim-lua/plenary.nvim',
 		},
 		config = load_config('cmp'),
+		build = 'make install_jsregexp',
 		event = { 'InsertEnter', 'CmdlineEnter' },
 	},
 
@@ -43,6 +44,7 @@ return {
 			'folke/neodev.nvim',
 			'b0o/schemastore.nvim',
 			'nvim-lua/plenary.nvim',
+			'SmiteshP/nvim-navic',
 		},
 		config = load_config('lsp'),
 		event = { 'BufReadPre', 'BufNewFile' },
@@ -170,5 +172,13 @@ return {
 		version = '*',
 		event = 'VeryLazy',
 		config = true,
+	},
+
+	-- code folding --
+	{
+		'kevinhwang91/nvim-ufo',
+		dependencies = { 'kevinhwang91/promise-async' },
+		config = load_config('ufo'),
+		event = 'VeryLazy',
 	},
 }

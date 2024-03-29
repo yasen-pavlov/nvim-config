@@ -52,7 +52,7 @@ require('material').setup({
 	lualine_style = 'stealth',
 	custom_colors = function(colors)
 		colors.editor.fg = '#EEFFFF'
-		colors.main.fg_dark = '#B0BEC5'
+		colors.editor.fg_dark = '#EEFFFF'
 	end,
 })
 

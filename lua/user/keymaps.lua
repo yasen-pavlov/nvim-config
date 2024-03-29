@@ -19,10 +19,15 @@ local general = {
 		{ keys = '<C-f>', command = '<Cmd>Telescope live_grep theme=dropdown<CR>', desc = 'Find in files' },
 		{ keys = '<C-s>', command = '<Cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find files' },
 		{
-			keys = '<C-i>',
+			keys = '<C-`>',
 			command = '<Cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({sort_mru = true}))<CR>',
 			desc = 'Find buffers',
 		},
+
+		-- Buffers
+		{ keys = '<A-,>', command = '<Cmd>bprev<CR>', desc = 'Previous buffer' },
+		{ keys = '<A-.>', command = '<Cmd>bnext<CR>', desc = 'Next buffer' },
+		{ keys = '<A-c>', command = '<Cmd>bdelete<CR>', desc = 'Close buffer' },
 
 		-- dap
 		{ keys = '<F5>', command = '<Cmd>lua require("dap").continue()<CR>', desc = 'Debugger start or continue' },
@@ -68,6 +73,7 @@ local which_key = {
 	T = { '<Cmd>lua _BTOP_TOGGLE()<CR>', 'Resouce monitor' },
 	C = { '<Cmd>Colortils<CR>', 'Color picker' },
 	R = { '<Cmd>TroubleToggle<CR>', 'Open trouble' },
+	f = { '<Cmd>lua vim.opt.foldcolumn = vim.opt.foldcolumn:get() == "0" and "1" or "0"<CR>', 'Toggle folding column' },
 	['<leader>'] = { '<Cmd>noh<CR>', 'Clear search' },
 	s = {
 		name = 'Search',

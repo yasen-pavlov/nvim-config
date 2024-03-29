@@ -60,6 +60,8 @@ return {
 	-- indent lines
 	{
 		'lukas-reineke/indent-blankline.nvim',
+		main = 'ibl',
+		opts = {},
 		event = 'User FileOpened',
 	},
 
@@ -100,6 +102,13 @@ return {
 	{
 		'jinh0/eyeliner.nvim',
 		config = load_config('eyeliner'),
+		event = 'VimEnter',
+	},
+
+	-- status column
+	{
+		'luukvbaal/statuscol.nvim',
+		config = load_config('statuscol'),
 		event = 'VimEnter',
 	},
 }

@@ -20,6 +20,9 @@ vim.g.skip_ts_context_commentstring_module = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- disable perl provider
+vim.g.loaded_perl_provider = 0
+
 -- options
 return {
 	clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
@@ -54,4 +57,7 @@ return {
 	laststatus = 3, -- enable global statusline
 	guifont = 'JetBrainsMono_Nerd_Font:h15', -- gui font
 	linespace = 0, -- set line spacing (works only for gui apps)
+	foldlevel = 99, -- set fold level (required by ufo)
+	foldlevelstart = 99, -- set fold level start (required by ufo)
+	foldenable = true, -- enable folding
 }
