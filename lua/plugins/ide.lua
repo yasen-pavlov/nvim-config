@@ -105,13 +105,19 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
-	-- rust-tools --
+	-- rust --
 	{
 		'simrat39/rust-tools.nvim',
 		config = load_config('languages/rust'),
 		ft = {
 			'rust',
 		},
+	},
+	{
+		'mrcjkb/rustaceanvim',
+		version = '^4',
+		config = load_config('languages/rust'),
+		ft = { 'rust' },
 	},
 
 	-- typescript-tools --

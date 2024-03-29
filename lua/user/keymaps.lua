@@ -160,10 +160,9 @@ local go = {
 local rust = {
 	['<leader>r'] = {
 		name = 'Rust',
-		a = { '<Cmd>RustHoverActions<CR>', 'Hover actions' },
-		r = { '<Cmd>RustRunnables<CR>', 'Run' },
-		d = { '<Cmd>RustDebuggables<CR>', 'Debug' },
-		c = { '<Cmd>RustOpenCargo<CR>', 'Open cargo' },
+		a = { '<Cmd>RustLsp hover actions<CR>', 'Hover actions' },
+		r = { '<Cmd>RustLsp runnables<CR>', 'Run' },
+		c = { '<Cmd>RustLsp openCargo<CR>', 'Open cargo' },
 	},
 }
 
