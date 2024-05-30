@@ -109,6 +109,7 @@ return {
 	{
 		'luukvbaal/statuscol.nvim',
 		config = load_config('statuscol'),
+		branch = '0.10',
 		event = 'VimEnter',
 	},
 }
