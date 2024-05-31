@@ -1,28 +1,36 @@
 local mappings = require('user.keymaps').languages.typescript
 
-require('typescript-tools').setup({
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentFormattingRangeProvider = false
-
+require('lspconfig').vtsls.setup({
+	on_attach = function(_, bufnr)
 		local wk = require('which-key')
 		local opts = { buffer = bufnr, remap = false }
 
 		wk.register(mappings, opts)
 	end,
 	settings = {
-		tsserver_file_preferences = {
-			includeInlayParameterNameHints = 'all',
-			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-			includeInlayFunctionParameterTypeHints = true,
-			includeInlayVariableTypeHints = true,
-			includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-			includeInlayPropertyDeclarationTypeHints = true,
-			includeInlayFunctionLikeReturnTypeHints = true,
-			includeInlayEnumMemberValueHints = true,
+		typescript = {
+			inlayHints = {
+				parameterNames = { enabled = 'literals' },
+				parameterTypes = { enabled = true },
+				variableTypes = { enabled = true },
+				propertyDeclarationTypes = { enabled = true },
+				functionLikeReturnTypes = { enabled = true },
+				enumMemberValues = { enabled = true },
+			},
 		},
 	},
 })
+
+-- handler for codelens  command
+vim.lsp.commands['editor.action.showReferences'] = function(command, ctx)
+	local locations = command.arguments[3]
+	local client = vim.lsp.get_client_by_id(ctx.client_id)
+	if locations and #locations > 0 then
+		local items = vim.lsp.util.locations_to_items(locations, client.offset_encoding)
+		vim.fn.setloclist(0, {}, ' ', { title = 'References', items = items, context = ctx })
+		vim.api.nvim_command('lopen')
+	end
+end
 
 local function get_js_debug()
 	local install_path = require('mason-registry').get_package('js-debug-adapter'):get_install_path()

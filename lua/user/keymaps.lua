@@ -167,16 +167,7 @@ local rust = {
 }
 
 local typescript = {
-	['<leader>t'] = {
-		name = 'Typescript',
-		i = { '<Cmd>TSToolsOrganizeImports<CR>', 'Sort and organize imports' },
-		s = { '<Cmd>TSToolsSortImports<CR>', 'Sort imports' },
-		r = { '<Cmd>TSToolsRemoveUnusedImports<CR>', 'Remove unused imports' },
-		R = { '<Cmd>TSToolsRemoveUnused<CR>', 'Remove all unused statements' },
-		m = { '<Cmd>TSToolsAddMissingImports<CR>', 'Add missing imports' },
-		a = { '<Cmd>TSToolsFixAll<CR>', 'Fix all fixable errors' },
-		g = { '<Cmd>TSToolsGoToSourceDefinition<CR>', 'Go to source definition' },
-	},
+	['<leader>t'] = { '<Cmd>VtsExec source_actions<CR>', 'Typescript actions' },
 }
 
 return {

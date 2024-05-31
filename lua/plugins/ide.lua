@@ -120,9 +120,9 @@ return {
 		ft = { 'rust' },
 	},
 
-	-- typescript-tools --
+	-- vtsls --
 	{
-		'pmizio/typescript-tools.nvim',
+		'yioneko/nvim-vtsls',
 		config = load_config('languages/typescript'),
 		ft = {
 			'javascript',
