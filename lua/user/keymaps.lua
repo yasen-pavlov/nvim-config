@@ -144,7 +144,7 @@ local lsp = {
 		r = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename all references' },
 		f = { '<Cmd>lua vim.lsp.buf.format({async = true})<CR>', 'Format buffer' },
 		s = { '<Cmd>Telescope lsp_workspace_symbols<CR>', 'Show workspace symbols' },
-		h = { '<Cmd>lua require("lsp-inlayhints").toggle()<CR>', 'Toggle inlay hints' },
+		h = { '<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>', 'Toggle inlay hints' },
 	},
 }
 
@@ -167,7 +167,19 @@ local rust = {
 }
 
 local typescript = {
-	['<leader>t'] = { '<Cmd>VtsExec source_actions<CR>', 'Typescript actions' },
+	['<leader>t'] = {
+		name = 'Typescript',
+		i = { '<Cmd>VtsExec organize_imports<CR>', 'Sort and organize imports' },
+		s = { '<Cmd>VtsExec sort_imports<CR>', 'Sort imports' },
+		r = { '<Cmd>VtsExec remove_unused_imports<CR>', 'Remove unused imports' },
+		R = { '<Cmd>VtsExec remove_unused<CR>', 'Remove all unused statements' },
+		m = { '<Cmd>VtsExec add_missing_imports<CR>', 'Add missing imports' },
+		a = { '<Cmd>VtsExec fix_all<CR>', 'Fix all fixable errors' },
+		A = { '<Cmd>VtsExec source_actions<CR>', 'Show source actions' },
+		t = { '<Cmd>VtsExec select_ts_version<CR>', 'Select TS version' },
+		f = { '<Cmd>VtsExec file_references<CR>', 'Show file references' },
+		d = { '<Cmd>VtsExec goto_source_definition<CR>', 'Go to source definition' },
+	},
 }
 
 return {

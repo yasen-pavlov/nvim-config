@@ -30,12 +30,14 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- autoformat on save
 	lsp_zero.buffer_autoformat()
 
-	-- enable inlay hints
-	require('lsp-inlayhints').on_attach(client, bufnr)
-
 	-- navic
 	if client.server_capabilities.documentSymbolProvider then
 		require('nvim-navic').attach(client, bufnr)
+	end
+
+	-- enable inlay hints
+	if client.supports_method('textDocument/inlayHint') or client.server_capabilities.inlayHintProvider then
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 end)
 

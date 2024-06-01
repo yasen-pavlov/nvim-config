@@ -9,7 +9,7 @@ lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
 			hint = {
-				enable = false,
+				enable = true,
 			},
 		},
 	},

@@ -58,13 +58,6 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
-	-- lsp-inlayhints --
-	{
-		'lvimuser/lsp-inlayhints.nvim',
-		config = load_config('inlayhints'),
-		event = { 'BufReadPre', 'BufNewFile' },
-	},
-
 	-- mason --
 	{
 		'williamboman/mason.nvim',

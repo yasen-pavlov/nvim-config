@@ -29,6 +29,7 @@ require('mason-lspconfig').setup({
 		'cssmodules_ls',
 		'clangd',
 		'gopls',
+		'vtsls',
 	},
 	handlers = {
 		lsp_zero.default_setup,

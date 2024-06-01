@@ -36,6 +36,18 @@ return {
 		},
 	},
 
+	-- nvim lsp file operations
+	{
+
+		'antosha417/nvim-lsp-file-operations',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-tree/nvim-tree.lua',
+		},
+		opts = {},
+		event = { 'BufReadPre', 'BufNewFile' },
+	},
+
 	-- illuminate
 	{
 		'RRethy/vim-illuminate',
@@ -110,6 +122,5 @@ return {
 		'luukvbaal/statuscol.nvim',
 		config = load_config('statuscol'),
 		branch = '0.10',
-		event = 'VimEnter',
 	},
 }
