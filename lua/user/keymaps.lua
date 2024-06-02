@@ -72,7 +72,6 @@ local which_key = {
 	u = { '<Cmd>UndotreeToggle<CR>', 'Undo history' },
 	T = { '<Cmd>lua _BTOP_TOGGLE()<CR>', 'Resouce monitor' },
 	C = { '<Cmd>Colortils<CR>', 'Color picker' },
-	R = { '<Cmd>TroubleToggle<CR>', 'Open trouble' },
 	f = { '<Cmd>lua vim.opt.foldcolumn = vim.opt.foldcolumn:get() == "0" and "1" or "0"<CR>', 'Toggle folding column' },
 	['<leader>'] = { '<Cmd>noh<CR>', 'Clear search' },
 	s = {
@@ -126,6 +125,13 @@ local which_key = {
 		i = { '<Cmd>LspInfo<CR>', 'Show LSP Info' },
 		n = { '<Cmd>NullLsInfo<CR>', 'Show null-ls info' },
 	},
+	x = {
+		name = 'Trouble',
+		x = { '<Cmd>Trouble diagnostics toggle<CR>', 'Show diagnostics' },
+		X = { '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', 'Show buffer diagnostics' },
+		l = { '<Cmd>Trouble loclist toggle<CR>', 'Show location list' },
+		q = { '<Cmd>Trouble qflist toggle<CR>', 'Show quickfix list' },
+	},
 }
 
 local lsp = {
@@ -143,8 +149,10 @@ local lsp = {
 	['<leader>l'] = {
 		r = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename all references' },
 		f = { '<Cmd>lua vim.lsp.buf.format({async = true})<CR>', 'Format buffer' },
-		s = { '<Cmd>Telescope lsp_workspace_symbols<CR>', 'Show workspace symbols' },
 		h = { '<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>', 'Toggle inlay hints' },
+		s = { '<Cmd>Trouble symbols toggle focus=false<CR>', 'Show workspace symbols' },
+		S = { '<Cmd>Telescope lsp_workspace_symbols<CR>', 'Show workspace symbols' },
+		l = { '<Cmd>Trouble lsp toggle focus=false win.position=right<CR>', 'Show definions / references / ...' },
 	},
 }
 

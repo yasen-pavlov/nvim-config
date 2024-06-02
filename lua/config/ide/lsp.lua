@@ -39,6 +39,21 @@ lsp_zero.on_attach(function(client, bufnr)
 	if client.supports_method('textDocument/inlayHint') or client.server_capabilities.inlayHintProvider then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
+
+	-- fix hover no information available
+	vim.lsp.handlers['textDocument/hover'] = function(_, result, ctx, config)
+		config = config or { border = 'single' }
+		config.focus_id = ctx.method
+		if not (result and result.contents) then
+			return
+		end
+		local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+		markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+		if vim.tbl_isempty(markdown_lines) then
+			return
+		end
+		return vim.lsp.util.open_floating_preview(markdown_lines, 'markdown', config)
+	end
 end)
 
 -- add borders to lsp windows
