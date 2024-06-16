@@ -50,6 +50,12 @@ require('material').setup({
 		darker = false, -- Enable higher contrast text for darker style
 	},
 	lualine_style = 'stealth',
+	custom_highlights = {
+		LspInlayHint = {
+			fg = '#757575',
+			italic = true,
+		},
+	},
 	custom_colors = function(colors)
 		colors.editor.fg = '#EEFFFF'
 		colors.editor.fg_dark = '#EEFFFF'

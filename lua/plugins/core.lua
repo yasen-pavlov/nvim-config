@@ -13,7 +13,6 @@ return {
 			'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
 			'nvim-treesitter/playground', -- Treesitter playground
 			'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
-			'windwp/nvim-ts-autotag', -- auto close tags
 			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
 		},
 		config = load_config('treesitter'),
@@ -28,6 +27,13 @@ return {
 			'TSInstallSync',
 			'TSInstallFromGrammar',
 		},
+	},
+
+	-- ts autotag --
+	{
+		'windwp/nvim-ts-autotag',
+		opts = {},
+		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
 	-- Telescope --
