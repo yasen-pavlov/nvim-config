@@ -5,6 +5,12 @@ telescope.setup({
 		prompt_prefix = '🔍 ',
 		selection_caret = ' ',
 		path_display = { 'smart' },
+		mappings = {
+			i = {
+				['<C-y>'] = 'select_default',
+				['<CR>'] = 'select_default',
+			},
+		},
 	},
 })
 

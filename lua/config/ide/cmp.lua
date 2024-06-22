@@ -24,6 +24,7 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
 		['<C-f>'] = cmp_action.luasnip_jump_forward(),
 		['<C-b>'] = cmp_action.luasnip_jump_backward(),
+		['<C-Space>'] = cmp.mapping.complete(),
 	}),
 	window = {
 		documentation = cmp.config.window.bordered(),
