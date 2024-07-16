@@ -6,7 +6,7 @@ end
 
 return {
 
-	-- Material colorscheme 'herpderp'
+	-- Material color scheme
 	{
 		'marko-cerovac/material.nvim',
 		lazy = false,

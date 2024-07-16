@@ -5,9 +5,8 @@ require('go').setup({
 	lsp_gofumpt = true,
 	lsp_on_attach = function(_, bufnr)
 		local wk = require('which-key')
-		local opts = { buffer = bufnr, remap = false }
 
-		wk.register(mappings, opts)
+		wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
 	end,
 	trouble = true,
 	luasnip = true,

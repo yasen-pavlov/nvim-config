@@ -51,6 +51,9 @@ return {
 	-- Which key --
 	{
 		'folke/which-key.nvim',
+		dependencies = {
+			{ 'echasnovski/mini.icons', version = false },
+		},
 		config = load_config('which-key'),
 		event = 'VeryLazy',
 	},

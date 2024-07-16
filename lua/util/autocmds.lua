@@ -9,6 +9,17 @@ local groups = {
 local autocmds = {
 
 	{
+		events = { 'TermOpen' },
+		opts = {
+			group = groups.settings,
+			desc = 'Disable spellcheck in terminal windows',
+			callback = function()
+				vim.opt_local.spell = false
+			end,
+		},
+	},
+
+	{
 		events = { 'BufNewFile', 'BufRead' },
 		opts = {
 			group = groups.settings,

@@ -23,9 +23,8 @@ lsp_zero.set_sign_icons({
 lsp_zero.on_attach(function(client, bufnr)
 	-- configure mappings
 	local wk = require('which-key')
-	local opts = { buffer = bufnr, remap = false }
 
-	wk.register(mappings, opts)
+	wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
 
 	-- autoformat on save
 	lsp_zero.buffer_autoformat()

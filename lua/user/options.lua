@@ -1,5 +1,5 @@
 -- misc settings
-vim.opt.shortmess:append('cI') -- supress `ins-completeion-menu` messages
+vim.opt.shortmess:append('cI') -- suppress `ins-completion-menu` messages
 vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
 vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
 
@@ -38,7 +38,7 @@ return {
 	splitbelow = true, -- force all horizontal splits to go below current window
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
-	termguicolors = true, -- set term gui colors (most terminals support this)
+	termguicolors = true, -- set term GUI colors (most terminals support this)
 	timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 250, -- faster completion (4000ms default)
@@ -55,9 +55,11 @@ return {
 	scrolloff = 8, -- how many lines to keep on screen vertically when scrolling
 	sidescrolloff = 8, -- how many lines to keep on screen horizontally when scrolling
 	laststatus = 3, -- enable global statusline
-	guifont = 'JetBrainsMono_Nerd_Font:h15', -- gui font
-	linespace = 0, -- set line spacing (works only for gui apps)
+	guifont = 'JetBrainsMono_Nerd_Font:h15', -- GUI font
+	linespace = 0, -- set line spacing (works only for GUI apps)
 	foldlevel = 99, -- set fold level (required by ufo)
 	foldlevelstart = 99, -- set fold level start (required by ufo)
 	foldenable = true, -- enable folding
+	spell = true, -- enable spellcheck
+	spelllang = 'en_us', -- set spellcheck language
 }

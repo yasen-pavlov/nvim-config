@@ -3,9 +3,8 @@ local mappings = require('user.keymaps').languages.typescript
 require('lspconfig').vtsls.setup({
 	on_attach = function(_, bufnr)
 		local wk = require('which-key')
-		local opts = { buffer = bufnr, remap = false }
 
-		wk.register(mappings, opts)
+		wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
 
 		-- handler for codelens  command
 		vim.lsp.commands['editor.action.showReferences'] = function(command, ctx)

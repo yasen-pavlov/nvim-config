@@ -8,9 +8,8 @@ vim.g.rustaceanvim = {
 	server = {
 		on_attach = function(_, bufnr)
 			local wk = require('which-key')
-			local opts = { buffer = bufnr, remap = false }
 
-			wk.register(mappings, opts)
+			wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
 		end,
 	},
 	dap = {

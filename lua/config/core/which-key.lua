@@ -16,10 +16,9 @@ which_key.setup({
 		separator = '󰁔', -- symbol used between a key and it's label
 		group = '󰉕 ', -- symbol prepended to a group
 	},
-	window = {
+	win = {
 		border = 'single', -- none, single, double, shadow
 	},
-	ignore_missing = true,
 })
 
-which_key.register(mappings, opts)
+which_key.add(mappings)
