@@ -14,6 +14,7 @@ return {
 			'nvim-treesitter/playground', -- Treesitter playground
 			'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
 			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
+			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
 		config = load_config('treesitter'),
 		build = ':TSUpdate',
