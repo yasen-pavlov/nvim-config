@@ -8,7 +8,7 @@ return {
 	-- lsp-zero --
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
+		branch = 'v4.x',
 		lazy = true,
 		config = false,
 		init = function()

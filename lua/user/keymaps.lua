@@ -1,13 +1,13 @@
 local general = {
 	insert_mode = {
 		{ keys = 'jk', command = '<ESC>', desc = 'Exit insert mode' },
-		{ keys = '<A-j>', command = '<Esc>:m .+1<CR>==gi', desc = 'Move line down' },
-		{ keys = '<A-k>', command = '<Esc>:m .-2<CR>==gi', desc = 'Move line up' },
+		{ keys = '<D-j>', command = '<Esc>:m .+1<CR>==gi', desc = 'Move line down' },
+		{ keys = '<D-k>', command = '<Esc>:m .-2<CR>==gi', desc = 'Move line up' },
 	},
 	normal_mode = {
 		-- Move current line
-		{ keys = '<A-j>', command = ':m .+1<CR>==', desc = 'Move line down' },
-		{ keys = '<A-k>', command = ':m .-2<CR>==', desc = 'Move line up' },
+		{ keys = '<D-j>', command = ':m .+1<CR>==', desc = 'Move line down' },
+		{ keys = '<D-k>', command = ':m .-2<CR>==', desc = 'Move line up' },
 
 		-- Resize current pane
 		{ keys = '<A-Up>', command = ':resize -2<CR>', desc = 'Resize current pane up' },
@@ -25,8 +25,8 @@ local general = {
 		},
 
 		-- Buffers
-		{ keys = '<A-,>', command = '<Cmd>bprev<CR>', desc = 'Previous buffer' },
-		{ keys = '<A-.>', command = '<Cmd>bnext<CR>', desc = 'Next buffer' },
+		{ keys = '<D-,>', command = '<Cmd>bprev<CR>', desc = 'Previous buffer' },
+		{ keys = '<D-.>', command = '<Cmd>bnext<CR>', desc = 'Next buffer' },
 		{ keys = '<A-c>', command = '<Cmd>bdelete<CR>', desc = 'Close buffer' },
 
 		-- dap
