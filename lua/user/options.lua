@@ -33,6 +33,14 @@ vim.g.maplocalleader = ' '
 -- disable perl provider
 vim.g.loaded_perl_provider = 0
 
+-- set os specific gui font
+local guifont
+if jit.os == 'OSX' then
+	guifont = 'JetBrainsMono_Nerd_Font:h15'
+else
+	guifont = 'JetBrainsMono_Nerd_Font:h12'
+end
+
 -- options
 return {
 	clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
@@ -65,7 +73,7 @@ return {
 	scrolloff = 8, -- how many lines to keep on screen vertically when scrolling
 	sidescrolloff = 8, -- how many lines to keep on screen horizontally when scrolling
 	laststatus = 3, -- enable global statusline
-	guifont = 'JetBrainsMono_Nerd_Font:h15', -- GUI font
+	guifont = guifont, -- GUI font
 	linespace = 0, -- set line spacing (works only for GUI apps)
 	foldlevel = 99, -- set fold level (required by ufo)
 	foldlevelstart = 99, -- set fold level start (required by ufo)

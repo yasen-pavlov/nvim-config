@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 local rainbow_delimiters = {
 	name = 'rainbow_delimiters',
 	disable = function()

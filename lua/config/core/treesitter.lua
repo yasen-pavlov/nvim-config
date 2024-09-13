@@ -30,6 +30,7 @@ require('nvim-treesitter.configs').setup({
 		'terraform',
 		'toml',
 		'yaml',
+		'hyprlang',
 	},
 	modules = {},
 	ignore_install = {},
@@ -41,5 +42,9 @@ require('nvim-treesitter.configs').setup({
 })
 
 vim.treesitter.language.register('bash', 'zsh')
+
+vim.filetype.add({
+	pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
+})
 
 require('ts_context_commentstring').setup({})

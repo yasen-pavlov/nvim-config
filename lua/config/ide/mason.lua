@@ -23,7 +23,7 @@ require('mason-lspconfig').setup({
 		'lua_ls',
 		'pylsp',
 		'rust_analyzer',
-		'tsserver',
+		'ts_ls',
 		'yamlls',
 		'cssls',
 		'cssmodules_ls',
@@ -33,7 +33,7 @@ require('mason-lspconfig').setup({
 	},
 	handlers = {
 		lsp_zero.default_setup,
-		tsserver = lsp_zero.noop,
+		ts_ls = lsp_zero.noop,
 		rust_analyzer = lsp_zero.noop,
 		bashls = config_ls('bash'),
 		cssls = config_ls('css'),

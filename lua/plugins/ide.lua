@@ -17,6 +17,17 @@ return {
 		end,
 	},
 
+	-- lazydev
+	{
+		'folke/lazydev.nvim',
+		ft = 'lua',
+		opts = {
+			library = {
+				{ path = 'luvit-meta/library', words = { 'vim%.uv' } },
+			},
+		},
+	},
+
 	-- cmp --
 	{
 		'hrsh7th/nvim-cmp',
@@ -41,7 +52,6 @@ return {
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			'hrsh7th/cmp-nvim-lsp',
-			'folke/neodev.nvim',
 			'b0o/schemastore.nvim',
 			'nvim-lua/plenary.nvim',
 			'SmiteshP/nvim-navic',

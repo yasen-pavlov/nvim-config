@@ -15,11 +15,6 @@ lspconfig.lua_ls.setup({
 	},
 })
 
--- neodev setup
-require('neodev').setup({
-	library = { plugins = { 'nvim-dap-ui' }, types = true },
-})
-
 -- dap configuration
 local dap = require('dap')
 

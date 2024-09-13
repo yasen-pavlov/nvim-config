@@ -12,6 +12,7 @@ cmp.setup({
 		completeopt = 'menu,menuone,noinsert',
 	},
 	sources = {
+		{ name = 'lazydev' },
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
 		{ name = 'buffer' },
