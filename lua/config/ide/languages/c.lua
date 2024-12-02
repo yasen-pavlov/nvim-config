@@ -1,5 +1,8 @@
 require('lspconfig').clangd.setup({
 	filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'arduino' },
+	init_options = {
+		fallbackFlags = { '--std=c2x' },
+	},
 })
 require('clangd_extensions').setup({
 	ast = {

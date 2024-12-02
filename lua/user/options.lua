@@ -78,6 +78,6 @@ return {
 	foldlevel = 99, -- set fold level (required by ufo)
 	foldlevelstart = 99, -- set fold level start (required by ufo)
 	foldenable = true, -- enable folding
-	spell = true, -- enable spellcheck
+	spell = false, -- disable spellcheck by default
 	spelllang = 'en_us', -- set spellcheck language
 }

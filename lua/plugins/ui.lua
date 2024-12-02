@@ -123,4 +123,11 @@ return {
 		config = load_config('statuscol'),
 		event = 'VimEnter',
 	},
+
+	-- toggle
+	{
+		[1] = 'gregorias/toggle.nvim',
+		config = true,
+		event = { 'VeryLazy' },
+	},
 }

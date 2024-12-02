@@ -188,6 +188,7 @@ local which_key = {
 	{ '<leader>xl', '<Cmd>Trouble loclist toggle<CR>', desc = 'Show location list', nowait = true, remap = false },
 	{ '<leader>xq', '<Cmd>Trouble qflist toggle<CR>', desc = 'Show quickfix list', nowait = true, remap = false },
 	{ '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', desc = 'Show diagnostics', nowait = true, remap = false },
+	{ '<leader>e', '<Cmd>set spell!<CR>', desc = 'Toggle spell checker', nowait = true, remap = false },
 }
 
 local lsp = {
