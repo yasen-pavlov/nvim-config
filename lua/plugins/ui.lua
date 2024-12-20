@@ -130,4 +130,11 @@ return {
 		config = true,
 		event = { 'VeryLazy' },
 	},
+
+	-- markdown
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		opts = {},
+		ft = { 'markdown' },
+	},
 }

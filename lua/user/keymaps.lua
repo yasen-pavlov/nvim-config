@@ -15,14 +15,9 @@ local general = {
 		{ keys = '<A-Left>', command = ':vertical resize -2<CR>', desc = 'Resize current pane left' },
 		{ keys = '<A-Right>', command = ':vertical resize +2<CR>', desc = 'Resize current pane right' },
 
-		-- Telescope
-		{ keys = '<C-f>', command = '<Cmd>Telescope live_grep theme=dropdown<CR>', desc = 'Find in files' },
-		{ keys = '<C-s>', command = '<Cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find files' },
-		{
-			keys = '<C-`>',
-			command = '<Cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({sort_mru = true}))<CR>',
-			desc = 'Find buffers',
-		},
+		-- Fzf
+		{ keys = '<C-f>', command = '<Cmd>FzfLua live_grep<CR>', desc = 'Find in files' },
+		{ keys = '<C-s>', command = '<Cmd>FzfLua files<CR>', desc = 'Find files' },
 
 		-- Buffers
 		{ keys = '<D-,>', command = '<Cmd>bprev<CR>', desc = 'Previous buffer' },
@@ -65,13 +60,6 @@ local general = {
 
 local which_key = {
 	{ '<leader><leader>', '<Cmd>noh<CR>', desc = 'Clear search', nowait = true, remap = false },
-	{
-		'<leader>B',
-		'<Cmd>Telescope file_browser path=%:p:help |select_buffer=true| theme=ivy<CR>',
-		desc = 'File Browser',
-		nowait = true,
-		remap = false,
-	},
 	{ '<leader>C', '<Cmd>Colortils<CR>', desc = 'Color picker', nowait = true, remap = false },
 	{ '<leader>T', '<Cmd>lua _BTOP_TOGGLE()<CR>', desc = 'Resouce monitor', nowait = true, remap = false },
 	{ '<leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Explore', nowait = true, remap = false },
@@ -85,7 +73,7 @@ local which_key = {
 	{ '<leader>g', group = 'Git', nowait = true, remap = false },
 	{
 		'<leader>gC',
-		'<Cmd>Telescope git_bcommits<CR>',
+		'<Cmd>FzfLua git_bcommits<CR>',
 		desc = 'Checkout commit(for current file)',
 		nowait = true,
 		remap = false,
@@ -98,8 +86,8 @@ local which_key = {
 		remap = false,
 	},
 	{ '<leader>gV', '<Cmd>DiffviewClose<CR>', desc = 'Close diffview', nowait = true, remap = false },
-	{ '<leader>gb', '<Cmd>Telescope git_branches<CR>', desc = 'Checkout branch', nowait = true, remap = false },
-	{ '<leader>gc', '<Cmd>Telescope git_commits<CR>', desc = 'Checkout commit', nowait = true, remap = false },
+	{ '<leader>gb', '<Cmd>FzfLua git_branches<CR>', desc = 'Checkout branch', nowait = true, remap = false },
+	{ '<leader>gc', '<Cmd>FzfLua git_commits<CR>', desc = 'Checkout commit', nowait = true, remap = false },
 	{ '<leader>gd', '<Cmd>Gitsigns diffthis HEAD<CR>', desc = 'Git Diff', nowait = true, remap = false },
 	{ '<leader>gg', '<Cmd>lua _LAZY_GIT_TOGGLE()<CR>', desc = 'Lazygit', nowait = true, remap = false },
 	{
@@ -117,7 +105,7 @@ local which_key = {
 		remap = false,
 	},
 	{ '<leader>gl', '<Cmd>lua require("gitsigns").blame_line()<CR>', desc = 'Blame', nowait = true, remap = false },
-	{ '<leader>go', '<Cmd>Telescope git_status<CR>', desc = 'Open changed file', nowait = true, remap = false },
+	{ '<leader>go', '<Cmd>FzfLua git_status<CR>', desc = 'Open changed file', nowait = true, remap = false },
 	{
 		'<leader>gp',
 		'<Cmd>lua require("gitsigns").preview_hunk()<CR>',
@@ -164,17 +152,17 @@ local which_key = {
 	{ '<leader>pu', '<Cmd>Lazy update<CR>', desc = 'Update', nowait = true, remap = false },
 	{ '<leader>q', '<Cmd>q!<CR>', desc = 'Quit', nowait = true, remap = false },
 	{ '<leader>s', group = 'Search', nowait = true, remap = false },
-	{ '<leader>sC', '<Cmd>Telescope commands<CR>', desc = 'Find commands', nowait = true, remap = false },
-	{ '<leader>sR', '<Cmd>Telescope registers<CR>', desc = 'Find in registers', nowait = true, remap = false },
-	{ '<leader>sT', '<Cmd>Telescope<CR>', desc = 'Open Telescope', nowait = true, remap = false },
-	{ '<leader>sb', '<Cmd>Telescope buffers<CR>', desc = 'Find in buffers', nowait = true, remap = false },
-	{ '<leader>sc', '<Cmd>Telescope colorscheme<CR>', desc = 'Find colorschemes', nowait = true, remap = false },
-	{ '<leader>sf', '<Cmd>Telescope find_files<CR>', desc = 'Find files', nowait = true, remap = false },
-	{ '<leader>sg', '<Cmd>Telescope live_grep<CR>', desc = 'Find in files', nowait = true, remap = false },
-	{ '<leader>sh', '<Cmd>Telescope help_tags<CR>', desc = 'Find in help', nowait = true, remap = false },
-	{ '<leader>sl', '<Cmd>Telescope resume<CR>', desc = 'Resume last search', nowait = true, remap = false },
-	{ '<leader>sm', '<Cmd>Telescope man_pages<CR>', desc = 'Find in man pages', nowait = true, remap = false },
-	{ '<leader>sr', '<Cmd>Telescope oldfiles<CR>', desc = 'Find recent files', nowait = true, remap = false },
+	{ '<leader>sC', '<Cmd>FzfLua commands<CR>', desc = 'Find commands', nowait = true, remap = false },
+	{ '<leader>sR', '<Cmd>FzfLua registers<CR>', desc = 'Find in registers', nowait = true, remap = false },
+	{ '<leader>sT', '<Cmd>FzfLua<CR>', desc = 'Open FzfLua', nowait = true, remap = false },
+	{ '<leader>sb', '<Cmd>FzfLua buffers<CR>', desc = 'Find in buffers', nowait = true, remap = false },
+	{ '<leader>sc', '<Cmd>FzfLua colorschemes<CR>', desc = 'Find colorschemes', nowait = true, remap = false },
+	{ '<leader>sf', '<Cmd>FzfLua files<CR>', desc = 'Find files', nowait = true, remap = false },
+	{ '<leader>sg', '<Cmd>FzfLua live_grep<CR>', desc = 'Find in files', nowait = true, remap = false },
+	{ '<leader>sh', '<Cmd>FzfLua helptags<CR>', desc = 'Find in help', nowait = true, remap = false },
+	{ '<leader>sl', '<Cmd>FzfLua resume<CR>', desc = 'Resume last search', nowait = true, remap = false },
+	{ '<leader>sm', '<Cmd>FzfLua manpages<CR>', desc = 'Find in man pages', nowait = true, remap = false },
+	{ '<leader>sr', '<Cmd>FzfLua oldfiles<CR>', desc = 'Find recent files', nowait = true, remap = false },
 	{ '<leader>u', '<Cmd>UndotreeToggle<CR>', desc = 'Undo history', nowait = true, remap = false },
 	{ '<leader>w', '<Cmd>w!<CR>', desc = 'Save', nowait = true, remap = false },
 	{ '<leader>x', group = 'Trouble', nowait = true, remap = false },
@@ -188,14 +176,14 @@ local which_key = {
 	{ '<leader>xl', '<Cmd>Trouble loclist toggle<CR>', desc = 'Show location list', nowait = true, remap = false },
 	{ '<leader>xq', '<Cmd>Trouble qflist toggle<CR>', desc = 'Show quickfix list', nowait = true, remap = false },
 	{ '<leader>xx', '<Cmd>Trouble diagnostics toggle<CR>', desc = 'Show diagnostics', nowait = true, remap = false },
-	{ '<leader>e', '<Cmd>set spell!<CR>', desc = 'Toggle spell checker', nowait = true, remap = false },
+	{ '<leader>z', '<Cmd>set spell!<CR>', desc = 'Toggle spell checker', nowait = true, remap = false },
 }
 
 local lsp = {
 	{ '<C-a>', '<Cmd>lua vim.lsp.buf.code_action()<CR>', desc = 'Select code action', remap = false },
 	{
 		'<leader>lS',
-		'<Cmd>Telescope lsp_workspace_symbols<CR>',
+		'<Cmd>FzfLua lsp_workspace_symbols<CR>',
 		desc = 'Show workspace symbols',
 		remap = false,
 	},
@@ -231,7 +219,7 @@ local lsp = {
 	{ 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', desc = 'Go to definition', remap = false },
 	{ 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', desc = 'Go to implementation', remap = false },
 	{ 'gl', '<Cmd>lua vim.diagnostic.open_float()<CR>', desc = 'Show diagnostic', remap = false },
-	{ 'gr', '<Cmd>Telescope lsp_references<CR>', desc = 'Show references', remap = false },
+	{ 'gr', '<Cmd>FzfLua lsp_references<CR>', desc = 'Show references', remap = false },
 }
 
 local go = {

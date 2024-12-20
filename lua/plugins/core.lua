@@ -14,7 +14,8 @@ return {
 			'nvim-treesitter/playground', -- Treesitter playground
 			'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
 			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
-			'nvim-treesitter/nvim-treesitter-textobjects',
+			'nvim-treesitter/nvim-treesitter-textobjects', -- treesitter textobjects
+			'nvim-treesitter/nvim-treesitter-context',
 		},
 		config = load_config('treesitter'),
 		build = ':TSUpdate',
@@ -37,16 +38,11 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
-	-- Telescope --
+	-- fzf-lua
 	{
-		'nvim-telescope/telescope.nvim',
-		dependencies = {
-			'nvim-lua/plenary.nvim', -- utility functions
-			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-			'nvim-telescope/telescope-file-browser.nvim', -- file browser for telescope
-		},
-		config = load_config('telescope'),
-		cmd = 'Telescope',
+		'ibhagwan/fzf-lua',
+		config = load_config('fzf-lua'),
+		cmd = 'FzfLua',
 	},
 
 	-- Which key --
