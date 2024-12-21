@@ -4,6 +4,9 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 blink.setup({
 	completion = {
+		list = {
+			selection = 'preselect',
+		},
 		menu = {
 			border = 'rounded',
 		},
