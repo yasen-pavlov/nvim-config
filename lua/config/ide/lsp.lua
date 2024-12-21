@@ -1,17 +1,18 @@
 local mappings = require('user.keymaps').lsp
 local lsp_zero = require('lsp-zero')
-lsp_zero.extend_lspconfig()
 
-lsp_zero.set_server_config({
-	capabilities = {
-		textDocument = {
-			foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			},
+local ufo_capabilities = {
+	textDocument = {
+		foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
 		},
 	},
-})
+}
+
+local lsp_capabilities = vim.tbl_deep_extend('force', require('blink.cmp').get_lsp_capabilities(), ufo_capabilities)
+local lspconfig_defaults = require('lspconfig').util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend('force', lspconfig_defaults.capabilities, lsp_capabilities)
 
 lsp_zero.set_sign_icons({
 	error = '',
