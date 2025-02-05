@@ -14,10 +14,6 @@ local lazygit = Terminal:new({
 	end,
 })
 
-function _LAZY_GIT_TOGGLE()
-	lazygit:toggle()
-end
-
 local btop = Terminal:new({
 	cmd = 'btop',
 	direction = 'float',

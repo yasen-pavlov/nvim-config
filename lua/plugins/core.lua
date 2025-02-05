@@ -128,6 +128,13 @@ return {
 		event = 'User FileOpened',
 	},
 
+	-- lazy.nvim
+	{
+		'folke/snacks.nvim',
+		config = load_config('snacks'),
+		event = 'VimEnter',
+	},
+
 	-- bigfile
 	{
 		'LunarVim/bigfile.nvim',

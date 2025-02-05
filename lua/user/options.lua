@@ -66,7 +66,7 @@ return {
 	sidescrolloff = 8, -- how many lines to keep on screen horizontally when scrolling
 	laststatus = 3, -- enable global statusline
 	guifont = 'JetBrainsMono_Nerd_Font:h15', -- GUI font
-	linespace = 0, -- set line spacing (works only for GUI apps)
+	linespace = -1, -- set line spacing (works only for GUI apps)
 	foldlevel = 99, -- set fold level (required by ufo)
 	foldlevelstart = 99, -- set fold level start (required by ufo)
 	foldenable = true, -- enable folding

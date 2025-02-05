@@ -5,7 +5,10 @@ require('luasnip.loaders.from_vscode').lazy_load()
 blink.setup({
 	completion = {
 		list = {
-			selection = 'preselect',
+			selection = {
+				preselect = true,
+				auto_insert = true,
+			},
 		},
 		menu = {
 			border = 'rounded',
@@ -16,22 +19,9 @@ blink.setup({
 			},
 		},
 	},
-	snippets = {
-		expand = function(snippet)
-			require('luasnip').lsp_expand(snippet)
-		end,
-		active = function(filter)
-			if filter and filter.direction then
-				return require('luasnip').jumpable(filter.direction)
-			end
-			return require('luasnip').in_snippet()
-		end,
-		jump = function(direction)
-			require('luasnip').jump(direction)
-		end,
-	},
+	snippets = { preset = 'luasnip' },
 	sources = {
-		default = { 'lsp', 'path', 'luasnip', 'buffer', 'lazydev' },
+		default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
 		providers = {
 			lazydev = {
 				name = 'LazyDev',
