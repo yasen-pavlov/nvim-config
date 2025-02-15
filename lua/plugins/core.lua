@@ -94,21 +94,6 @@ return {
 		event = 'VimEnter',
 	},
 
-	-- copilot
-	{
-		'zbirenbaum/copilot.lua',
-		opts = {
-			suggestion = {
-				auto_trigger = true,
-				keymap = {
-					accept = '<M-;>',
-				},
-			},
-		},
-		cmd = 'Copilot',
-		event = 'InsertEnter',
-	},
-
 	-- diffview
 	{
 		'sindrets/diffview.nvim',

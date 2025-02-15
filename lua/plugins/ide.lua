@@ -37,6 +37,7 @@ return {
 			'rafamadriz/friendly-snippets',
 		},
 		config = load_config('blink'),
+		event = { 'InsertEnter', 'CmdLineEnter' },
 	},
 
 	-- lsp --
@@ -101,15 +102,7 @@ return {
 
 	-- rust --
 	{
-		'simrat39/rust-tools.nvim',
-		config = load_config('languages/rust'),
-		ft = {
-			'rust',
-		},
-	},
-	{
 		'mrcjkb/rustaceanvim',
-		version = '^4',
 		config = load_config('languages/rust'),
 		ft = { 'rust' },
 	},
