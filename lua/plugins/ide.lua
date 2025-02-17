@@ -171,4 +171,23 @@ return {
 		config = load_config('ufo'),
 		event = 'VeryLazy',
 	},
+
+	-- testing
+	{
+		'nvim-neotest/neotest',
+		dependencies = {
+			'nvim-neotest/nvim-nio',
+			'nvim-neotest/neotest-python',
+			'nvim-lua/plenary.nvim',
+			'antoinemadec/FixCursorHold.nvim',
+			'nvim-treesitter/nvim-treesitter',
+			'fredrikaverpil/neotest-golang',
+		},
+		config = load_config('neotest'),
+		ft = {
+			'go',
+			'python',
+			'rust',
+		},
+	},
 }
