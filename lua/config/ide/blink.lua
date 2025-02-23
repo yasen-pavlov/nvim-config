@@ -3,6 +3,9 @@ local blink = require('blink.cmp')
 require('luasnip.loaders.from_vscode').lazy_load()
 
 blink.setup({
+	appearance = {
+		use_nvim_cmp_as_default = true,
+	},
 	completion = {
 		list = {
 			selection = {
@@ -12,6 +15,25 @@ blink.setup({
 		},
 		menu = {
 			border = 'rounded',
+			draw = {
+				columns = { { 'kind_icon' }, { 'label', gap = 1 } },
+				components = {
+					kind_icon = {
+						text = function(item)
+							local kind = require('lspkind').symbol_map[item.kind] or ''
+							return kind .. ' '
+						end,
+					},
+					label = {
+						text = function(ctx)
+							return require('colorful-menu').blink_components_text(ctx)
+						end,
+						highlight = function(ctx)
+							return require('colorful-menu').blink_components_highlight(ctx)
+						end,
+					},
+				},
+			},
 		},
 		documentation = {
 			window = {

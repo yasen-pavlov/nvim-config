@@ -30,6 +30,7 @@ require('mason-lspconfig').setup({
 		'clangd',
 		'gopls',
 		'vtsls',
+		'tailwindcss',
 	},
 	handlers = {
 		lsp_zero.default_setup,

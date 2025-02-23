@@ -35,6 +35,8 @@ return {
 		dependencies = {
 			'L3MON4D3/LuaSnip',
 			'rafamadriz/friendly-snippets',
+			'xzbdmw/colorful-menu.nvim',
+			'onsails/lspkind.nvim',
 		},
 		config = load_config('blink'),
 		event = { 'InsertEnter', 'CmdLineEnter' },
@@ -172,7 +174,7 @@ return {
 		event = 'VeryLazy',
 	},
 
-	-- testing
+	-- testing --
 	{
 		'nvim-neotest/neotest',
 		dependencies = {
@@ -188,6 +190,29 @@ return {
 			'go',
 			'python',
 			'rust',
+		},
+	},
+
+	-- tailwind tools --
+	{
+		'luckasRanarison/tailwind-tools.nvim',
+		build = ':UpdateRemotePlugins',
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter',
+			'nvim-telescope/telescope.nvim', -- optional
+			'neovim/nvim-lspconfig', -- optional
+		},
+		opts = {}, -- your configuration
+		ft = {
+			'html',
+			'css',
+			'vue',
+			'astro',
+			'svelte',
+			'javascript',
+			'typescript',
+			'javascriptreact',
+			'typescriptreact',
 		},
 	},
 }
