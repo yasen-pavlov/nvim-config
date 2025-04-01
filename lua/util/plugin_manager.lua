@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
 	ui = {
 		border = 'rounded',
+		backdrop = 100,
 		title = 'lazy.nvim',
 	},
 }

@@ -1,4 +1,6 @@
-require('null-ls').setup()
+require('null-ls').setup({
+	border = 'rounded',
+})
 require('mason-null-ls').setup({
 	ensure_installed = {
 		'black',

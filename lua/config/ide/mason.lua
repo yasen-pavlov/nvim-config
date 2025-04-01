@@ -13,7 +13,12 @@ local config_ls = function(name)
 	end
 end
 
-require('mason').setup({})
+require('mason').setup({
+	ui = {
+		border = 'rounded',
+		backdrop = 100,
+	},
+})
 require('mason-lspconfig').setup({
 	ensure_installed = {
 		'bashls',
