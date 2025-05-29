@@ -1,5 +1,4 @@
 local mappings = require('user.keymaps').lsp
-local lsp_zero = require('lsp-zero')
 
 local ufo_capabilities = {
   textDocument = {
@@ -25,18 +24,26 @@ vim.diagnostic.config({
   },
 })
 
-lsp_zero.on_attach(function(client, bufnr)
-  -- configure mappings
-  local wk = require('which-key')
+-- setup LSP actions
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function(event)
+    local bufnr = event.buf
+    local wk = require('which-key')
+    local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 
-  wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
+    -- add mappings
+    wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
 
-  -- autoformat on save
-  lsp_zero.buffer_autoformat()
+    -- autoformat on save
+    require('lsp-format').on_attach(client, bufnr)
 
-  -- enable inlay hints
-  vim.lsp.inlay_hint.enable(true)
-end)
+    -- enable inlay hints
+    if not vim.lsp.inlay_hint.is_enabled() then
+      vim.lsp.inlay_hint.enable(true)
+    end
+  end,
+})
 
 -- add borders to lsp windows
 require('lspconfig.ui.windows').default_options.border = 'single'
