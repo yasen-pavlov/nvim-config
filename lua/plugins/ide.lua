@@ -19,7 +19,7 @@ return {
   -- blink --
   {
     'Saghen/blink.cmp',
-    build = 'cargo build --release',
+    version = '1.*',
     dependencies = {
       'L3MON4D3/LuaSnip',
       'rafamadriz/friendly-snippets',
