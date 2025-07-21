@@ -209,4 +209,15 @@ return {
     'lukas-reineke/lsp-format.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
   },
+
+  -- refactor --
+  {
+    'ThePrimeagen/refactoring.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {},
+    event = { 'BufReadPre', 'BufNewFile' },
+  },
 }
