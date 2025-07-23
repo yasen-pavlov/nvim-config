@@ -39,11 +39,13 @@ require('mason-lspconfig').setup({
     'gopls',
     'vtsls',
     'tailwindcss',
+    'gh_actions_ls',
   },
   handlers = {
     default_handler,
     ts_ls = noop,
     rust_analyzer = noop,
+    gopls = noop,
     bashls = config_ls('bash'),
     cssls = config_ls('css'),
     jsonls = config_ls('json'),

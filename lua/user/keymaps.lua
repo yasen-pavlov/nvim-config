@@ -215,6 +215,63 @@ local which_key = {
     remap = false,
   },
   { '<leader>a', group = 'Refactor', nowait = true, remap = false },
+  { '<leader>n', group = 'Test',     nowait = true, remap = false },
+  {
+    '<leader>nr',
+    '<Cmd>Neotest run<CR>',
+    desc = 'Run',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>nf',
+    '<Cmd>Neotest run file<CR>',
+    desc = 'Run file',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>nl',
+    '<Cmd>Neotest run last<CR>',
+    desc = 'Run last',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>na',
+    '<Cmd>Neotest attach<CR>',
+    desc = 'Attach',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>nj',
+    '<Cmd>Neotest jump<CR>',
+    desc = 'Jump',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>no',
+    '<Cmd>Neotest output<CR>',
+    desc = 'Output',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>np',
+    '<Cmd>Neotest output-panel<CR>',
+    desc = 'Output panel',
+    nowait = true,
+    remap = false,
+  },
+  {
+    '<leader>nt',
+    '<Cmd>Neotest summary<CR>',
+    desc = 'Summary',
+    nowait = true,
+    remap = false,
+  },
 }
 
 local lsp = {
