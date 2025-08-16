@@ -45,7 +45,7 @@ require('mason-lspconfig').setup({
     default_handler,
     ts_ls = noop,
     rust_analyzer = noop,
-    gopls = noop,
+    gopls = config_ls('go'),
     bashls = config_ls('bash'),
     cssls = config_ls('css'),
     jsonls = config_ls('json'),

@@ -319,9 +319,11 @@ local lsp = {
 
 local go = {
   { '<leader>o',  group = 'Go',            remap = false },
-  { '<leader>oc', '<Cmd>GoCodeLenAct<CR>', desc = 'Codelens', remap = false },
+  { '<leader>ol', '<Cmd>GoCodeLenAct<CR>', desc = 'Codelens', remap = false },
   { '<leader>od', '<Cmd>GoDebug<CR>',      desc = 'Debug',    remap = false },
   { '<leader>or', '<Cmd>GoRun<CR>',        desc = 'Run',      remap = false },
+  { '<leader>oc', '<Cmd>GoCoverage<CR>',   desc = 'Coverage', remap = false },
+  { '<leader>ot', '<Cmd>GoTest<CR>',       desc = 'Test',     remap = false },
 }
 
 local rust = {
