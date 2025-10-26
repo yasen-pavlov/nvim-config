@@ -183,29 +183,6 @@ return {
 		},
 	},
 
-	-- tailwind tools --
-	{
-		'luckasRanarison/tailwind-tools.nvim',
-		build = ':UpdateRemotePlugins',
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter',
-			'nvim-telescope/telescope.nvim',
-			'neovim/nvim-lspconfig',
-		},
-		opts = {},
-		ft = {
-			'html',
-			'css',
-			'vue',
-			'astro',
-			'svelte',
-			'javascript',
-			'typescript',
-			'javascriptreact',
-			'typescriptreact',
-		},
-	},
-
 	-- autoformat --
 	{
 		'lukas-reineke/lsp-format.nvim',

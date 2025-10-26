@@ -1,22 +1,4 @@
-local mappings = require('user.keymaps').languages.typescript
-
-require('lspconfig').vtsls.setup({
-	on_attach = function(_, bufnr)
-		local wk = require('which-key')
-
-		wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
-
-		-- handler for codelens  command
-		vim.lsp.commands['editor.action.showReferences'] = function(command, ctx)
-			local locations = command.arguments[3]
-			local client = vim.lsp.get_client_by_id(ctx.client_id)
-			if locations and #locations > 0 then
-				local items = vim.lsp.util.locations_to_items(locations, client.offset_encoding)
-				vim.fn.setloclist(0, {}, ' ', { title = 'References', items = items, context = ctx })
-				vim.api.nvim_command('lopen')
-			end
-		end
-	end,
+vim.lsp.config('vtsls', {
 	settings = {
 		complete_function_calls = true,
 		vtsls = {
@@ -58,10 +40,10 @@ require('lspconfig').vtsls.setup({
 		},
 	},
 })
+vim.lsp.enable('vtsls')
 
 local function get_js_debug()
-	local install_path = require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-	return install_path .. '/js-debug/src/dapDebugServer.js'
+	return vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js'
 end
 
 for _, adapter in ipairs({ 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }) do
