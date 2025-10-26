@@ -21,9 +21,6 @@ local opts = {
 		backdrop = 100,
 		title = 'lazy.nvim',
 	},
-	rocks = {
-		enabled = false,
-	},
 }
 
 require('lazy').setup('plugins', opts)
