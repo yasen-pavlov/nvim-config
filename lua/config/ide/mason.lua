@@ -21,7 +21,6 @@ require('mason-lspconfig').setup({
 		'lua_ls',
 		'pylsp',
 		'rust_analyzer',
-		'ts_ls',
 		'yamlls',
 		'cssls',
 		'cssmodules_ls',
@@ -30,6 +29,7 @@ require('mason-lspconfig').setup({
 		'vtsls',
 		'tailwindcss',
 		'gh_actions_ls',
+		'qmlls',
 	},
 	automatic_enable = {
 		exclude = {
