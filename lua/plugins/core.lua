@@ -126,4 +126,12 @@ return {
 		config = load_config('bigfile'),
 		event = { 'FileReadPre', 'BufReadPre', 'User FileOpened' },
 	},
+
+	-- claude-code
+	{
+		'greggh/claude-code.nvim',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		config = load_config('claude-code'),
+		cmd = { 'ClaudeCode', 'ClaudeCodeContinue', 'ClaudeCodeResume', 'ClaudeCodeVerbose' },
+	},
 }

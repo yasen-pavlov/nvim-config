@@ -215,6 +215,11 @@ local which_key = {
 		remap = false,
 	},
 	{ '<leader>a', group = 'Refactor', nowait = true, remap = false },
+	{ '<leader>c', group = 'Claude', nowait = true, remap = false },
+	{ '<leader>cc', '<Cmd>ClaudeCode<CR>', desc = 'Toggle Claude', nowait = true, remap = false },
+	{ '<leader>cC', '<Cmd>ClaudeCodeContinue<CR>', desc = 'Continue last session', nowait = true, remap = false },
+	{ '<leader>cr', '<Cmd>ClaudeCodeResume<CR>', desc = 'Resume session', nowait = true, remap = false },
+	{ '<leader>cv', '<Cmd>ClaudeCodeVerbose<CR>', desc = 'Toggle verbose', nowait = true, remap = false },
 	{ '<leader>n', group = 'Test', nowait = true, remap = false },
 	{
 		'<leader>nr',
