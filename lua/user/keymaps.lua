@@ -212,6 +212,13 @@ local which_key = {
 	{ '<leader>pp', '<Cmd>Lazy profile<CR>', desc = 'Profile', nowait = true, remap = false },
 	{ '<leader>ps', '<Cmd>Lazy sync<CR>', desc = 'Sync', nowait = true, remap = false },
 	{ '<leader>pu', '<Cmd>Lazy update<CR>', desc = 'Update', nowait = true, remap = false },
+	{
+		'<leader>N',
+		'<Cmd>lua Snacks.picker.notifications()<CR>',
+		desc = 'Notification history',
+		nowait = true,
+		remap = false,
+	},
 	{ '<leader>q', '<Cmd>q!<CR>', desc = 'Quit', nowait = true, remap = false },
 	{ '<leader>s', group = 'Search', nowait = true, remap = false },
 	{ '<leader>sC', '<Cmd>FzfLua commands<CR>', desc = 'Find commands', nowait = true, remap = false },
