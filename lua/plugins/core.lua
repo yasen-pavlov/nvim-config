@@ -13,7 +13,7 @@ return {
 		dependencies = {
 			'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
 			'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
-			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
+			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments (JSX/TSX/etc.)
 			'nvim-treesitter/nvim-treesitter-textobjects', -- treesitter textobjects
 			'nvim-treesitter/nvim-treesitter-context',
 		},
@@ -64,12 +64,13 @@ return {
 
 	-- Comment --
 	{
-		'numToStr/Comment.nvim',
+		'echasnovski/mini.comment',
+		version = false,
 		config = load_config('comment'),
 		event = 'User FileOpened',
 		keys = {
 			{ 'gc', mode = { 'n', 'v' } },
-			{ 'gb', mode = { 'n', 'v' } },
+			{ 'gcc', mode = 'n' },
 		},
 	},
 
