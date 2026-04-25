@@ -14,7 +14,7 @@ init.lua
 
 - **Treesitter on the `main` branch** — opt-in highlighting + indent via `vim.treesitter.start()`, parsers managed through the `tree-sitter` CLI.
 - **Modern formatting/linting stack** — [conform.nvim](https://github.com/stevearc/conform.nvim) + [nvim-lint](https://github.com/mfussenegger/nvim-lint) + [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim). No null-ls.
-- **Snacks.nvim everywhere it makes sense** — input, notifier, bigfile, lazygit, git blame, gitbrowse.
+- **Snacks.nvim everywhere it makes sense** — input, notifier, bigfile, lazygit, git blame, gitbrowse, gh (issues / PRs / diffs via the GitHub CLI).
 - **Centralized keymaps** — every binding lives in `lua/user/keymaps.lua`, scoped lazily by `LspAttach` / `FileType` / which-key as needed.
 - **No build, no test suite** — `~/.config/nvim` is a symlink to this repo; edit and reload.
 
@@ -27,7 +27,8 @@ git clone https://github.com/<you>/nvim-config ~/.config/nvim
 System dependencies (Arch / CachyOS):
 
 ```bash
-sudo pacman -S neovim ripgrep fd tree-sitter-cli lazygit btop
+sudo pacman -S neovim ripgrep fd tree-sitter-cli lazygit btop github-cli
+gh auth login
 ```
 
 Mason will pull formatters, linters, debug adapters, and LSP servers on first launch. Treesitter parsers install via `nvim-treesitter`'s main-branch `install()` (needs `tree-sitter-cli`).
@@ -83,6 +84,7 @@ Leader is `Space`. Keys are grouped under which-key categories:
 | Prefix | Group |
 |---|---|
 | `<leader>g` | Git (snacks lazygit / blame / gitbrowse, gitsigns hunks, diffview) |
+| `<leader>gh` | GitHub (snacks gh — issues, PRs, PR diffs) |
 | `<leader>l` | LSP (info, format via conform, rename, references, inlay hints) |
 | `<leader>s` | Search (fzf-lua) |
 | `<leader>n` | Tests (neotest) |
