@@ -96,6 +96,7 @@ return {
 			'theHamsta/nvim-dap-virtual-text',
 			'jbyuki/one-small-step-for-vimkind',
 			'mfussenegger/nvim-dap-python',
+			{ 'leoluz/nvim-dap-go', opts = {} },
 			'nvim-neotest/nvim-nio',
 			'fredrikaverpil/neotest-golang',
 		},

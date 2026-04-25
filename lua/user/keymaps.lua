@@ -292,6 +292,13 @@ local which_key = {
 		remap = false,
 	},
 	{
+		'<leader>nd',
+		'<Cmd>lua require("neotest").run.run({ strategy = "dap" })<CR>',
+		desc = 'Debug nearest test',
+		nowait = true,
+		remap = false,
+	},
+	{
 		'<leader>na',
 		'<Cmd>Neotest attach<CR>',
 		desc = 'Attach',
