@@ -83,8 +83,7 @@ Leader is `Space`. Keys are grouped under which-key categories:
 
 | Prefix | Group |
 |---|---|
-| `<leader>g` | Git (snacks lazygit / blame / gitbrowse, gitsigns hunks, diffview) |
-| `<leader>gh` | GitHub (snacks gh — issues, PRs, PR diffs) |
+| `<leader>g` | Git + GitHub (snacks lazygit / blame / gitbrowse / gh, gitsigns hunks, diffview) |
 | `<leader>l` | LSP (info, format via conform, rename, references, inlay hints) |
 | `<leader>s` | Search (fzf-lua) |
 | `<leader>n` | Tests (neotest) |
