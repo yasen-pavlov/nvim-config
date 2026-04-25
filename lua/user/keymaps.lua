@@ -201,7 +201,7 @@ local which_key = {
 	{ '<leader>h', '<Cmd>WhichKey<CR>', desc = 'Key bindings help', nowait = true, remap = false },
 	{ '<leader>l', group = 'LSP', nowait = true, remap = false },
 	{ '<leader>lc', '<Cmd>ConformInfo<CR>', desc = 'Show Conform info', nowait = true, remap = false },
-	{ '<leader>li', '<Cmd>LspInfo<CR>', desc = 'Show LSP Info', nowait = true, remap = false },
+	{ '<leader>li', '<Cmd>checkhealth vim.lsp<CR>', desc = 'Show LSP Info', nowait = true, remap = false },
 	{ '<leader>lm', '<Cmd>Mason<CR>', desc = 'Mason', nowait = true, remap = false },
 	{ '<leader>p', group = 'Plugins', nowait = true, remap = false },
 	{ '<leader>pL', '<Cmd>Lazy log<CR>', desc = 'Log', nowait = true, remap = false },

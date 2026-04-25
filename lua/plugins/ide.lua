@@ -40,7 +40,7 @@ return {
 		},
 		config = load_config('lsp'),
 		event = { 'BufReadPre', 'BufNewFile' },
-		cmd = { 'LspStart', 'LspInfo', 'LspInstall', 'LspUninstall' },
+		cmd = { 'LspStart', 'LspStop', 'LspRestart', 'LspLog' },
 	},
 
 	-- nvim-lightbulb --
