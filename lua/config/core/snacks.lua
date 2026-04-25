@@ -1,4 +1,5 @@
 require('snacks').setup({
+	input = { enabled = true },
 	styles = {
 		---@diagnostic disable-next-line: missing-fields
 		lazygit = {

@@ -84,13 +84,6 @@ return {
 		event = 'User FileOpened',
 	},
 
-	-- dressing
-	{
-		'stevearc/dressing.nvim',
-		opts = {},
-		event = 'VimEnter',
-	},
-
 	-- colortils
 	{
 		'yasen-pavlov/colortils.nvim',
