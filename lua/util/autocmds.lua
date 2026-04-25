@@ -37,8 +37,7 @@ local autocmds = {
 			group = groups.settings,
 			desc = 'Disable comments continuation',
 			callback = function()
-				vim.cmd('set formatoptions-=cro')
-				vim.cmd('setlocal formatoptions-=cro')
+				vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
 			end,
 		},
 	},

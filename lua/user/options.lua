@@ -1,7 +1,7 @@
 -- misc settings
 vim.opt.shortmess:append('cI') -- suppress `ins-completion-menu` messages
-vim.cmd('set whichwrap+=<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
-vim.cmd('set iskeyword+=-') -- treat words with dashes in them as whole words
+vim.opt.whichwrap:append('<,>,[,],h,l') -- set which keys can wrap to next/previous line if at end/beginning of line ('[' and ']' are for insert mode)
+vim.opt.iskeyword:append('-') -- treat words with dashes in them as whole words
 
 -- remove disable mouse entry from context menu
 vim.cmd('aunmenu PopUp.How-to\\ disable\\ mouse')
@@ -36,9 +36,7 @@ vim.g.loaded_perl_provider = 0
 -- options
 return {
 	clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
-	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
-	fileencoding = 'utf-8', -- the encoding written to a file
 	ignorecase = true, -- ignore case in search patterns
 	mouse = 'a', -- allow the mouse to be used in neovim
 	pumheight = 10, -- pop up menu height
@@ -52,7 +50,6 @@ return {
 	timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 250, -- faster completion (4000ms default)
-	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
 	shiftwidth = 2, -- the number of spaces inserted for each indentation
 	tabstop = 2, -- insert 2 spaces for a tab
