@@ -65,15 +65,27 @@ return {
 		cmd = { 'Mason', 'MasonUpdate' },
 	},
 
-	-- null-ls --
+	-- formatters --
 	{
-		'nvimtools/none-ls.nvim',
-		dependencies = {
-			'jay-babu/mason-null-ls.nvim',
-		},
-		config = load_config('null-ls'),
+		'stevearc/conform.nvim',
+		config = load_config('conform'),
 		event = { 'BufReadPre', 'BufNewFile' },
-		cmd = { 'NullLsInfo', 'NullLsAttach', 'NullsInstall', 'NullsUninstall' },
+		cmd = { 'ConformInfo' },
+	},
+
+	-- linters --
+	{
+		'mfussenegger/nvim-lint',
+		config = load_config('nvim-lint'),
+		event = { 'BufReadPre', 'BufNewFile' },
+	},
+
+	-- ensure formatters/linters/dap adapters are installed via Mason --
+	{
+		'WhoIsSethDaniel/mason-tool-installer.nvim',
+		dependencies = { 'williamboman/mason.nvim' },
+		config = load_config('mason-tool-installer'),
+		event = 'VeryLazy',
 	},
 
 	-- dap --
@@ -180,12 +192,6 @@ return {
 			'python',
 			'rust',
 		},
-	},
-
-	-- autoformat --
-	{
-		'lukas-reineke/lsp-format.nvim',
-		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
 	-- refactor --

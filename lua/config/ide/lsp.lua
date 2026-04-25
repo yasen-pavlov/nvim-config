@@ -32,7 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		local wk = require('which-key')
 
 		wk.add(vim.list_extend(vim.deepcopy(mappings), { { buffer = bufnr } }))
-		require('lsp-format').on_attach(client, bufnr)
 
 		if not vim.lsp.inlay_hint.is_enabled() then
 			vim.lsp.inlay_hint.enable(true)
