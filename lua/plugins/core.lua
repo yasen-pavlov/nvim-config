@@ -9,26 +9,21 @@ return {
 	-- Treesitter --
 	{
 		'nvim-treesitter/nvim-treesitter',
-		branch = 'master',
+		branch = 'main',
 		dependencies = {
 			'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
-			'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
 			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments (JSX/TSX/etc.)
-			'nvim-treesitter/nvim-treesitter-textobjects', -- treesitter textobjects
-			'nvim-treesitter/nvim-treesitter-context',
 		},
 		config = load_config('treesitter'),
-		build = ':TSUpdate',
+		event = { 'BufReadPre', 'BufNewFile' },
+		cmd = { 'TSInstall', 'TSUpdate', 'TSLog' },
+	},
+
+	-- treesitter-context (independent of nvim-treesitter branch)
+	{
+		'nvim-treesitter/nvim-treesitter-context',
+		opts = {},
 		event = 'User FileOpened',
-		cmd = {
-			'TSInstall',
-			'TSUninstall',
-			'TSUpdate',
-			'TSUpdateSync',
-			'TSInstallInfo',
-			'TSInstallSync',
-			'TSInstallFromGrammar',
-		},
 	},
 
 	-- ts autotag --

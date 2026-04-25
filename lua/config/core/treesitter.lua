@@ -1,45 +1,55 @@
-require('nvim-treesitter.configs').setup({
-	ensure_installed = {
-		'c',
-		'lua',
-		'vim',
-		'vimdoc',
-		'query',
-		'python',
-		'rust',
-		'javascript',
-		'typescript',
-		'html',
-		'css',
-		'diff',
-		'dockerfile',
-		'git_config',
-		'git_rebase',
-		'gitattributes',
-		'gitcommit',
-		'gitignore',
-		'java',
-		'make',
-		'markdown',
-		'markdown_inline',
-		'perl',
-		'php',
-		'regex',
-		'ruby',
-		'sql',
-		'terraform',
-		'toml',
-		'yaml',
-		'hyprlang',
-	},
-	modules = {},
-	ignore_install = {},
-	auto_install = true,
-	sync_install = false,
-	highlight = { enable = true },
-	indent = { enable = true },
-	endwise = { enable = true },
+local parsers = {
+	'bash',
+	'c',
+	'css',
+	'diff',
+	'dockerfile',
+	'git_config',
+	'git_rebase',
+	'gitattributes',
+	'gitcommit',
+	'gitignore',
+	'html',
+	'hyprlang',
+	'java',
+	'javascript',
+	'json',
+	'lua',
+	'make',
+	'markdown',
+	'markdown_inline',
+	'perl',
+	'php',
+	'python',
+	'query',
+	'regex',
+	'ruby',
+	'rust',
+	'sql',
+	'terraform',
+	'toml',
+	'tsx',
+	'typescript',
+	'vim',
+	'vimdoc',
+	'yaml',
+}
+
+require('nvim-treesitter').install(parsers)
+
+vim.api.nvim_create_autocmd('FileType', {
+	group = vim.api.nvim_create_augroup('UserTreesitter', { clear = true }),
+	callback = function(args)
+		pcall(vim.treesitter.start)
+		vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
 })
+
+-- start on the current buffer if FileType already fired before plugin load
+if vim.bo.filetype ~= '' then
+	pcall(vim.treesitter.start)
+	vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+end
 
 vim.treesitter.language.register('bash', 'zsh')
 
