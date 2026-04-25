@@ -11,13 +11,11 @@ require('material').setup({
 		'illuminate',
 		'indent-blankline',
 		'nvim-navic',
-		'nvim-notify',
 		'nvim-tree',
 		'nvim-web-devicons',
 		'rainbow-delimiters',
 		'trouble',
 		'which-key',
-		'nvim-notify',
 	},
 	disable = {
 		colored_cursor = false,

@@ -55,13 +55,6 @@ return {
 		event = 'User FileOpened',
 	},
 
-	-- fancy notifications
-	{
-		'rcarriga/nvim-notify',
-		config = load_config('notify'),
-		event = 'VimEnter',
-	},
-
 	-- lsp progress
 	{
 		'j-hui/fidget.nvim',
