@@ -1,7 +1,7 @@
 require('snacks').setup({
 	input = { enabled = true },
 	notifier = { enabled = true, timeout = 2000 },
-	picker = { enabled = true },
+	picker = { enabled = true, ui_select = true },
 	gh = { enabled = true },
 	bigfile = {
 		enabled = true,

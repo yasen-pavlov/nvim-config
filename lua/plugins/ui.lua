@@ -58,7 +58,11 @@ return {
 	-- lsp progress
 	{
 		'j-hui/fidget.nvim',
-		opts = {},
+		opts = {
+			notification = {
+				window = { avoid = { 'NvimTree' } },
+			},
+		},
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
