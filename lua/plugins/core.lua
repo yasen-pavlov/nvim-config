@@ -9,9 +9,9 @@ return {
 	-- Treesitter --
 	{
 		'nvim-treesitter/nvim-treesitter',
+		branch = 'master',
 		dependencies = {
 			'HiPhish/rainbow-delimiters.nvim', -- colorize delimiter pairs
-			'nvim-treesitter/playground', -- Treesitter playground
 			'RRethy/nvim-treesitter-endwise', -- auto end structures like do, def, etc.
 			'JoosepAlviste/nvim-ts-context-commentstring', -- context aware comments
 			'nvim-treesitter/nvim-treesitter-textobjects', -- treesitter textobjects

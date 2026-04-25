@@ -10,7 +10,7 @@ local lazygit = Terminal:new({
 	direction = 'float',
 	on_open = function(term)
 		vim.cmd('startinsert!')
-		vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+		vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = term.bufnr, noremap = true, silent = true })
 	end,
 })
 
@@ -19,7 +19,7 @@ local btop = Terminal:new({
 	direction = 'float',
 	on_open = function(term)
 		vim.cmd('startinsert!')
-		vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+		vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = term.bufnr, noremap = true, silent = true })
 	end,
 })
 

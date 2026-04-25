@@ -1,7 +1,7 @@
 vim.lsp.config('clangd', {
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'arduino' },
   init_options = {
-    fallbackFlags = { '--std=c2x' },
+    fallbackFlags = { '--std=c23' },
   },
 })
 vim.lsp.enable('clangd')

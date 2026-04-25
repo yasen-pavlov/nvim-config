@@ -10,8 +10,7 @@ local ufo_capabilities = {
 }
 
 local lsp_capabilities = vim.tbl_deep_extend('force', require('blink.cmp').get_lsp_capabilities(), ufo_capabilities)
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend('force', lspconfig_defaults.capabilities, lsp_capabilities)
+vim.lsp.config('*', { capabilities = lsp_capabilities })
 
 vim.diagnostic.config({
 	signs = {
@@ -32,7 +31,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 		local wk = require('which-key')
 
-		wk.add(vim.list_extend(mappings, { { buffer = bufnr } }))
+		wk.add(vim.list_extend(vim.deepcopy(mappings), { { buffer = bufnr } }))
 		require('lsp-format').on_attach(client, bufnr)
 
 		if not vim.lsp.inlay_hint.is_enabled() then
@@ -41,8 +40,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		-- server-specific tweaks
 		if client.name == 'vtsls' then
-      local ts_mappings = require('user.keymaps').languages.typescript
-		  wk.add(vim.list_extend(ts_mappings, { { buffer = bufnr } }))
+			local ts_mappings = require('user.keymaps').languages.typescript
+			wk.add(vim.list_extend(vim.deepcopy(ts_mappings), { { buffer = bufnr } }))
 
 			vim.lsp.commands['editor.action.showReferences'] = function(command, ctx)
 				local locations = command.arguments[3]
@@ -56,5 +55,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
--- add borders to lsp windows
-require('lspconfig.ui.windows').default_options.border = 'single'
