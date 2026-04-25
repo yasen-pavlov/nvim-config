@@ -3,6 +3,10 @@ require('snacks').setup({
 	notifier = { enabled = true, timeout = 2000 },
 	picker = { enabled = true, ui_select = true },
 	gh = { enabled = true },
+	quickfile = { enabled = true },
+	scroll = { enabled = true },
+	dashboard = { enabled = true },
+	scope = { enabled = true },
 	bigfile = {
 		enabled = true,
 		notify = true,
