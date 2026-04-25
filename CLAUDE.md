@@ -10,7 +10,8 @@ Personal Neovim configuration. `~/.config/nvim` is a symlink to this directory, 
 
 - Format Lua: `stylua .` (uses `.stylua.toml`; tabs for indent, `AutoPreferSingle` quotes — match this style in edits).
 - Plugin manager: lazy.nvim. The lockfile `lazy-lock.json` is gitignored, so plugin upgrades are intentionally not pinned in-repo.
-- Inside Neovim: `:Lazy sync`, `:Mason`, `:LspInfo`, `:NullLsInfo`, `:checkhealth`.
+- Inside Neovim: `:Lazy sync`, `:Mason`, `:LspInfo`, `:ConformInfo`, `:checkhealth`.
+- Treesitter parsers are installed via `nvim-treesitter` on its `main` branch, which shells out to the `tree-sitter` CLI. Install it system-wide (`pacman -S tree-sitter-cli`) — without it only the parsers nvim ships with (`lua`, `vim`, `vimdoc`, `c`, `query`, `markdown`, `markdown_inline`) work.
 
 ## Architecture
 
@@ -39,16 +40,20 @@ All user keymaps live in `lua/user/keymaps.lua` and are exported as named tables
 
 - `general` → applied globally by `keymaps_loader.lua`.
 - `which_key` → registered in `lua/config/core/which-key.lua` via `which_key.add(...)`.
-- `lsp` → registered inside the `LspAttach` autocmd in `lua/config/ide/lsp.lua`, scoped to the attaching buffer with `vim.list_extend(mappings, { { buffer = bufnr } })`.
+- `lsp` → registered inside the `LspAttach` autocmd in `lua/config/ide/lsp.lua`, scoped to the attaching buffer with `vim.list_extend(vim.deepcopy(mappings), { { buffer = bufnr } })`. The `deepcopy` is load-bearing — `vim.list_extend` mutates its first arg, so without it the cached `keymaps.lua` table accumulates `{ buffer = N }` entries across attaches.
 - `languages.<lang>` → registered from each language's `on_attach` (e.g. `lua/config/ide/languages/go.lua`) or from `lsp.lua` for server-specific cases (e.g. vtsls).
 
 When adding a new keymap, put it in the appropriate table in `keymaps.lua` rather than inline in a plugin config — and **do not** add a per-language table to `keymaps_loader.lua`; it must be added on attach so `buffer = bufnr` scoping works.
 
-### LSP / tooling installation
+### LSP / formatter / linter / DAP-tool installation
 
-`lua/config/ide/mason.lua` is the single source of truth for which LSP servers Mason ensures (`ensure_installed`), and `lua/config/ide/null-ls.lua` does the same for formatters/linters/DAP adapters via `mason-null-ls`. `automatic_enable.exclude` lists servers that are configured manually elsewhere (currently `ts_ls` and `rust_analyzer`, the latter handled by `rustaceanvim`). Per-server `vim.lsp.config(...)` + `vim.lsp.enable(...)` calls live in `lua/config/ide/languages/<lang>.lua`.
+Three files split the responsibility:
 
-Capabilities are composed once in `lua/config/ide/lsp.lua` by merging blink.cmp's capabilities with UFO folding capabilities into `lspconfig.util.default_config.capabilities`, so individual language files don't need to repeat that.
+- `lua/config/ide/mason.lua` — LSP servers (`mason-lspconfig.ensure_installed`). `automatic_enable.exclude` lists servers that are configured manually elsewhere (`ts_ls`, `rust_analyzer` — the latter handled by `rustaceanvim`). Per-server `vim.lsp.config(...)` + `vim.lsp.enable(...)` calls live in `lua/config/ide/languages/<lang>.lua`.
+- `lua/config/ide/mason-tool-installer.lua` — formatters, linters, and DAP adapters (`mason-tool-installer.ensure_installed`). This replaces the old `mason-null-ls` integration.
+- `lua/config/ide/conform.lua` and `lua/config/ide/nvim-lint.lua` — actually wire those tools to filetypes. `conform.format_on_save` uses `lsp_format = 'fallback'`, so LSP formatting only runs when no external formatter is configured for the buffer's filetype. `<leader>lf` calls `require('conform').format` directly.
+
+Capabilities are composed once in `lua/config/ide/lsp.lua` and registered as the global default with `vim.lsp.config('*', { capabilities = ... })`. Individual language files inherit and only need to add server-specific options. The capabilities table is `blink.cmp.get_lsp_capabilities()` deep-extended with UFO folding capabilities.
 
 ## Conventions
 
