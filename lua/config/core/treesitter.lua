@@ -1,6 +1,7 @@
 local parsers = {
 	'bash',
 	'c',
+	'comment',
 	'css',
 	'diff',
 	'dockerfile',
@@ -12,12 +13,14 @@ local parsers = {
 	'go',
 	'gomod',
 	'gosum',
+	'gotmpl',
 	'gowork',
 	'html',
 	'hyprlang',
 	'java',
 	'javascript',
 	'json',
+	'latex',
 	'lua',
 	'make',
 	'markdown',
@@ -29,13 +32,17 @@ local parsers = {
 	'regex',
 	'ruby',
 	'rust',
+	'scss',
 	'sql',
+	'svelte',
 	'terraform',
 	'toml',
 	'tsx',
 	'typescript',
+	'typst',
 	'vim',
 	'vimdoc',
+	'vue',
 	'yaml',
 }
 
@@ -58,6 +65,12 @@ end
 vim.treesitter.language.register('bash', 'zsh')
 
 vim.filetype.add({
+	extension = {
+		gotmpl = 'gotmpl',
+		gohtml = 'gotmpl',
+		tmpl = 'gotmpl',
+		qml = 'qml',
+	},
 	pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 })
 
