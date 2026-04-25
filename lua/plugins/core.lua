@@ -102,25 +102,12 @@ return {
 		event = 'VimEnter',
 	},
 
-	-- gitlinker
-	{
-		'ruifm/gitlinker.nvim',
-		opts = {},
-		event = 'User FileOpened',
-	},
-
-	-- lazy.nvim
+	-- snacks (loaded early so bigfile / quickfile / notifier register before BufReadPre)
 	{
 		'folke/snacks.nvim',
+		priority = 1000,
+		lazy = false,
 		config = load_config('snacks'),
-		event = 'VimEnter',
-	},
-
-	-- bigfile
-	{
-		'LunarVim/bigfile.nvim',
-		config = load_config('bigfile'),
-		event = { 'FileReadPre', 'BufReadPre', 'User FileOpened' },
 	},
 
 	-- claude-code

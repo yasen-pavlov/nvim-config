@@ -5,14 +5,6 @@ require('toggleterm').setup({
 })
 
 local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({
-	cmd = 'lazygit',
-	direction = 'float',
-	on_open = function(term)
-		vim.cmd('startinsert!')
-		vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = term.bufnr, noremap = true, silent = true })
-	end,
-})
 
 local btop = Terminal:new({
 	cmd = 'btop',
