@@ -98,7 +98,6 @@ return {
 			'mfussenegger/nvim-dap-python',
 			{ 'leoluz/nvim-dap-go', opts = {} },
 			'nvim-neotest/nvim-nio',
-			'fredrikaverpil/neotest-golang',
 		},
 		config = load_config('dap'),
 		event = { 'BufReadPre', 'BufNewFile' },
